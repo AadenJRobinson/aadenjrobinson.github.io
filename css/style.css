@@ -1,4 +1,4 @@
-/*<editor-fold desc="Reset tags, font definitions">*/
+/*<editor-fold desc="Reset tags">*/
 /* Reset for common elements */
 body, html {
     margin: 0;
@@ -31,6 +31,8 @@ div, p, pre, form {
     margin: 0;
     padding: 0;
 }
+/*</editor-fold>*/
+/*<editor-fold desc="Font definitions">*/
 @font-face {
     font-family: "Birdseye";
     src: url("../fonts/17c55b27-e9ab-43cd-b948-d49f97480d68d41d.eot?#iefix?1717543760");
@@ -127,6 +129,7 @@ div, p, pre, form {
     font-weight: 600;
     font-style: italic;
 }
+/*</editor-fold>*/
 html {
     height: 100%;
 }
@@ -148,7 +151,6 @@ a {
 a img, a:hover img {
     border: none;
 }
-/*</editor-fold>*/
 
 /*<editor-fold desc="Specificity Hierarchy"> */
 
@@ -914,26 +916,17 @@ div.paragraph ol li {
 /* Base text styles */
 #content,
 div.paragraph,
-p,
-.form-field label {
+p {
   font-family: "Roboto" !important;
 }
 
 #content div.paragraph,
 #content p,
 #content,
-#content .form-field label,
 div.paragraph,
-p,
-.form-field label {
+p {
   color: #626262 !important;
 }
-
-/* Footer elements */
-.elements.footer div.paragraph,
-.elements.footer p,
-.elements.footer,
-.elements.footer .form-field label {}
 
 /* Headings and product blocks */
 #content h2,
@@ -941,7 +934,7 @@ p,
 #content .product-large,
 #content .product-small,
 h2 {
-    font-family: "Droid Serif" !important;
+    font-family: "Lora" !important;
 }
 
 /* The subtitle on index.html ("A Little About Myself") */
@@ -950,15 +943,15 @@ h2 {
 #content .product-large,
 #content .product-small,
 h2 {
-  color: #2a2a2a !important;
+  color: #2a2a2a;
 }
 
 /* Footer headings */
 .elements.footer h2,
 .elements.footer .product-long,
 .elements.footer .product-small {
-  font-family: "Roboto" !important;
-  font-weight: 700 !important;
+    font-family: "Roboto" !important;
+    font-weight: 700 !important;
 }
 
 /* Global reset for special block */
@@ -980,8 +973,8 @@ h2 {
 /* Headline styles */
 .headline,
 .header-section .content-title {
-  font-family: "Droid Serif" !important;
-  color: #2a2a2a !important;
+  font-family: Droid Serif !important;
+  color: #000000;
   letter-spacing: 0 !important;
 }
 
@@ -1033,19 +1026,11 @@ h2 {
   #content p,
   #content .product-block,
   #content,
-  #content .form-field label,
   div.paragraph,
-  p,
-  .form-field label {
+  p {
     font-size: 16px !important;
     line-height: 23px !important;
   }
-
-  .elements.footer div.paragraph,
-  .elements.footer p,
-  .elements.footer .product-block,
-  .elements.footer,
-  .elements.footer .form-field label {}
 
   #content h2,
   #content .product-long,
