@@ -148,19 +148,12 @@ a {
     color: inherit;
     text-decoration: none;
 }
-a img, a:hover img {
-    border: none;
-}
 
-/*<editor-fold desc="Specificity Hierarchy"> */
-
-/*
-!important > Inline Style> ID Selector > Class Selector > Element Selector > Universal Selector
+/* Specificity Hierarchy:
+!important > Inline Style > ID Selector > Class Selector > Element Selector > Universal Selector
 
 The later selector is prioritized for same specificity level.
-
-
-</editor-fold>*/
+*/
 
 div.blur {
     backdrop-filter: blur(3px);
@@ -357,11 +350,6 @@ body.full-width-body-off .footer {
     text-transform: uppercase;
     letter-spacing: 0.03em;
     transition: font-size 260ms ease;
-}
-.birdseye-header .logo img {
-    overflow: hidden;
-    max-width: 200px;
-    max-height: 40px;
 }
 .nav {
     display: table-cell;
