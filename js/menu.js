@@ -60,7 +60,7 @@ jQuery(function($) {
     _addClasses: function() {
       var base = this;
 
-      // Add fade in class to nav + logo + banner
+      // Add fade in class to nav + logo + header
         $('body').addClass('fade-in');
 
       // Add class to nav items with subnav
@@ -137,10 +137,10 @@ jQuery(function($) {
         $.fn.intervalLoop('.mobile-nav #member-login', base._moveLogin, 800, 5);
 
         // Move Flyout
-        $.fn.intervalLoop('.birdseye-header #menus', base._moveFlyout, 300, 8);
+        $.fn.intervalLoop('.nav-wrap #menus', base._moveFlyout, 300, 8);
 
         // Move Cart
-        $.fn.intervalLoop('.birdseye-header #mini-cart', base._moveCart, 300, 8);
+        $.fn.intervalLoop('.nav-wrap #mini-cart', base._moveCart, 300, 8);
 
         // Check Cart
 

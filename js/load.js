@@ -6,8 +6,6 @@ fetch("../template/index.html").then(response => {
 }).then(htmlContent => {
     let templateDoc = new DOMParser().parseFromString(htmlContent, "text/html");
 
-    // Append the footer
-    document.body.appendChild(
-        templateDoc.getElementById("footer-wrap")
-            .content.cloneNode(true));
+    // Apply the footer code into the footer-wrap div
+    document.getElementById("footer-wrap").innerHTML = templateDoc.getElementById("footer-wrap").innerHTML;
 });

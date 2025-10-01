@@ -4,6 +4,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100%;
 }
 
 /* Reset for headings */
@@ -12,12 +13,6 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
 }
 
-/* Reset for form elements */
-input, button, textarea, select {
-    margin: 0;
-    padding: 0;
-    font-family: inherit;
-}
 
 /* Reset for lists */
 ul, ol {
@@ -130,59 +125,45 @@ div, p, pre, form {
     font-style: italic;
 }
 /*</editor-fold>*/
-html {
-    height: 100%;
-}
+
 body {
-    width: 100%;
-    height: 100%;
+    /* Footer background and text colors */
     background: rgba(0, 0, 0, 0.05);
     color: #000000;
-    font-family: "Birdseye", sans-serif;
+
+    /* Possibly removable (defaults) */
     font-size: 16px;
     font-weight: 500;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+
+    /* Overridden */
+    font-family: "Birdseye", sans-serif;
 }
+
 a {
     color: inherit;
     text-decoration: none;
 }
 
-/* Specificity Hierarchy:
-!important > Inline Style > ID Selector > Class Selector > Element Selector > Universal Selector
-
-The later selector is prioritized for same specificity level.
-*/
-
-div.blur {
-    backdrop-filter: blur(3px);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 h2 {
     color: #000000;
     font-family: "Montserrat", sans-serif;
-    font-size: 24px;
+    font-size: 42px;
+    line-height: 54px;
     font-weight: 700;
-    line-height: 1.25;
     margin: 0 auto 30px;
 }
 
-/* Arguably useless */
-div.paragraph,
 p {
-    font-family: "Birdseye", sans-serif;
-    font-size: 16px;
     font-weight: 500;
-    line-height: 1.75;
     margin: 0 auto 30px;
+
+    font-size: 16px;
+    line-height: 23px;
+
+    font-family: "Roboto", sans-serif;
+    color: #626262;
 }
-div.paragraph a,
+
 p a {
     color: inherit;
     font-weight: 600;
@@ -190,15 +171,15 @@ p a {
     transition: opacity 300ms ease-in-out;
 }
 
+/* Background image */
 .header-section {
-    background: url(../images/geometric.jpg) no-repeat top
-    center;
+    background: url(../images/geometric.jpg) no-repeat top center transparent;
+    height: 600px;
     background-size: cover;
 }
-.header-section {
-    height: 600px;
-}
-body.header-overlay-on .header-section:not(.section-bg-color):before {
+
+/* Blurs the background and adds a gradient */
+.header-section::before {
     content: "";
     display: block;
     position: absolute;
@@ -212,48 +193,59 @@ body.header-overlay-on .header-section:not(.section-bg-color):before {
             rgba(0, 0, 0, 0.1) 60%,
             rgba(0, 0, 0, 0) 100%
     );
-    backdrop-filter: blur(5px)
+    backdrop-filter: blur(4px)
 }
 
-.section-wrap {
-    display: table;
-    table-layout: fixed;
+/* Vertically centers the title content */
+.header-section, .body-section {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    /* No idea what this does */
+    box-sizing: border-box;
 }
 
-.section-wrap .section {
-    vertical-align: middle;
-    display: table-cell;
+/* Sizes the paragraph content box and positions the text at the top */
+.body-section {
+    min-height: 400px;
+    justify-content: flex-start;
 }
 
-.section-wrap:only-child .body-section {
-    height: 400px;
-    vertical-align: top;
-}
-
-.banner-wrap {
+.header-wrap {
     position: relative;
-    height: 100%;
+    /* Likely overridden */
     background: #000000;
     color: #ffffff;
 }
-.banner-wrap .container {
-    padding: 100px 40px;
+
+/* Padding for title div */
+.header-wrap .container {
+    padding: /* Does nothing because of flexbox */100px /* Limits text width */40px;
 }
-.banner-wrap .banner {
+
+/* Aligns title text */
+.header-wrap .header {
     text-align: center;
+
+    /* Not used */
     transition: opacity 500ms ease;
 }
-.banner-wrap h2 {
-    color: inherit;
-    font-family: "Birdseye", sans-serif;
-    font-size: 80px;
+
+/* Title text */
+.header-wrap h2 {
     font-weight: 100;
-    line-height: 1.15;
     margin: 15px auto;
+    font-size: 65px;
+    line-height: 70px;
+    font-family: "Droid Serif", sans-serif;
+    color: #000000;
+    letter-spacing: 0;
 }
-.banner-wrap div.paragraph,
-.banner-wrap p {
+
+/* Title area paragraphs; not used */
+.header-wrap p {
     color: inherit;
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
@@ -262,354 +254,214 @@ body.header-overlay-on .header-section:not(.section-bg-color):before {
     letter-spacing: 0.15em;
     margin: 15px auto;
 }
+
 .container,
 .footer {
     position: relative;
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
 }
+
+/* Main content */
 .main-wrap {
     width: 100%;
     background: #ffffff;
 }
+
+/* Container div for main content */
 .main-wrap .container {
     padding: 60px 40px;
 }
-body.full-width-body-off .banner-wrap .container,
-body.full-width-body-off .main-wrap .container,
-body.full-width-body-off .footer {
+
+/* Content and footer control */
+.header-wrap .container,
+.main-wrap .container,
+.footer {
     max-width: 1200px;
     margin: 0 auto;
 }
-.footer-wrap {
+
+/*<editor-fold desc="Footer settings">*/
+#footer-wrap {
     width: 100%;
     font-size: 14px;
 }
-.footer-wrap .footer {
+
+#footer-wrap .footer {
     padding: 20px 40px;
 }
-.footer-wrap h2,
-.footer-wrap div.paragraph,
-.footer-wrap p {
+
+#footer-wrap h2,
+#footer-wrap p {
     margin: 0 auto 20px;
 }
-.footer-wrap h2 {
+
+#footer-wrap h2 {
     font-size: 20px;
 }
-.footer-wrap div.paragraph {
-    font-size: 14px;
-}
-.footer-wrap p {
-    font-size: 14px;
-}
+/*</editor-fold>*/
 
-.birdseye-header {
+/* Navbar properties */
+.nav-wrap {
     position: fixed;
     top: 0;
     z-index: 12;
     width: 100%;
-    max-width: 100%;
     padding: 20px 40px;
-    color: #fff;
-    border-color: #fff;
+    color: #ffffff;
+    border-color: #ffffff;
     box-sizing: border-box;
+    /* The transition from top to scrolled */
     transition: background-color 300ms ease, color 260ms ease, padding 180ms ease;
+
     backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
-.birdseye-header .container {
-    display: table;
-    overflow-y: hidden;
+.nav-wrap .container {
+    display: block;
     width: 100%;
     max-height: 80px;
+    overflow: hidden;
 }
-.birdseye-header .hamburger {
+.nav-wrap .hamburger {
     display: none;
     box-sizing: initial;
 }
-.birdseye-header .logo {
-    display: table-cell;
-    overflow-y: hidden;
-    vertical-align: middle;
-}
-.birdseye-header .logo * {
-    display: block;
-}
-.birdseye-header .logo a {
-    margin-right: 30px;
-    transition: opacity 200ms ease;
-}
 
-.birdseye-header .logo #title {
-    max-width: 400px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 30px;
-    font-weight: 700;
-    line-height: 1;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    transition: font-size 260ms ease;
+.desktop-nav, .mobile-nav {
+    display: block;
+    text-align: right;
 }
-.nav {
-    display: table-cell;
-    vertical-align: middle;
-}
-.nav ul {
-    float: right;
+:is(.desktop-nav, .mobile-nav) ul {
+    display: inline-block;
     max-width: calc(100vw - 480px);
-    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    text-align: right;
 }
-.nav li {
+:is(.desktop-nav, .mobile-nav) li {
     display: inline-block;
     margin: 5px 5px 5px 0;
 }
-.nav .menu-item {
+:is(.desktop-nav, .mobile-nav) .menu-item {
     display: block;
     padding: 12px 20px;
     border: 1px solid transparent;
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
     line-height: 1;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    -webkit-transition: opacity 300ms ease;
-    -moz-transition: opacity 300ms ease;
-    -ms-transition: opacity 300ms ease;
     transition: opacity 300ms ease;
 }
-.nav li.active > .menu-item {
+:is(.desktop-nav, .mobile-nav) li.active > .menu-item {
     border-color: inherit;
 }
 
-.nav li .menu-item:hover {
+:is(.desktop-nav, .mobile-nav) li .menu-item:hover {
     opacity: 50%;
 }
 
 .mobile-nav {
     display: none;
 }
-#menus > .menu-wrap > .menu .menu {
-    margin: 0 -1px;
-}
-#menus .menu {
-    position: relative;
-    background: #ffffff;
-    -webkit-box-shadow: inset 0 0 0 1px #000000;
-    -moz-box-shadow: inset 0 0 0 1px #000000;
-    -ms-box-shadow: inset 0 0 0 1px #000000;
-    box-shadow: inset 0 0 0 1px #000000;
-}
-#menus .menu li a {
-    background: transparent;
-    color: #000000;
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: normal;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border: none;
-}
-#menus .menu li a:hover {
-    background: rgba(0, 0, 0, 0.05);
-    -webkit-transition: opacity 200ms ease;
-    -moz-transition: opacity 200ms ease;
-    -ms-transition: opacity 200ms ease;
-    transition: opacity 200ms ease;
-}
-#menus .menu-arrow {
-    display: none;
-}
-body.affix .birdseye-header {
+
+/*<editor-fold desc="Scrolled navbar settings"> */
+body.affix .nav-wrap {
     position: fixed;
-    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    -ms-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     padding: 10px 40px;
 }
-body.affix .birdseye-header .logo #title {
-    font-size: 24px;
-}
-body.affix .birdseye-header .menu-item {
+
+
+body.affix .nav-wrap .menu-item {
     padding: 10px 20px;
 }
 
-body.affix .birdseye-header,
-body.no-header-page .birdseye-header,
-body.splash-banner-page .birdseye-header {
+body.affix .nav-wrap {
     background: #ffffff;
     color: #000000;
     border-color: #000000;
 }
 
-body.affix .birdseye-header .hamburger span,
-body.affix .birdseye-header .hamburger span:before,
-body.affix .birdseye-header .hamburger span:after,
-body.no-header-page .birdseye-header .hamburger span,
-body.no-header-page .birdseye-header .hamburger span:before,
-body.no-header-page .birdseye-header .hamburger span:after,
-body.splash-banner-page .birdseye-header .hamburger span,
-body.splash-banner-page .birdseye-header .hamburger span:before,
-body.splash-banner-page .birdseye-header .hamburger span:after {
+body.affix .nav-wrap .hamburger span,
+body.affix .nav-wrap .hamburger span:before,
+body.affix .nav-wrap .hamburger span:after {
     background: #000000;
 }
 
-body.affix.alt-nav-on .birdseye-header,
-body.no-header-page.alt-nav-on .birdseye-header,
-body.splash-banner-page.alt-nav-on .birdseye-header {
+/* A dark mode navigation; possibly good for the rest of the site later */
+body.affix.alt-nav-on .nav-wrap {
     background: rgba(0, 0, 0, 0.9);
     color: #ffffff;
     border-color: #ffffff;
 }
 
-body.affix.alt-nav-on .birdseye-header .hamburger span,
-body.affix.alt-nav-on .birdseye-header .hamburger span:before,
-body.affix.alt-nav-on .birdseye-header .hamburger span:after,
-body.no-header-page.alt-nav-on .birdseye-header .hamburger span,
-body.no-header-page.alt-nav-on .birdseye-header .hamburger span:before,
-body.no-header-page.alt-nav-on .birdseye-header .hamburger span:after,
-body.splash-banner-page.alt-nav-on .birdseye-header .hamburger span,
-body.splash-banner-page.alt-nav-on .birdseye-header .hamburger span:before,
-body.splash-banner-page.alt-nav-on .birdseye-header .hamburger span:after {
-    background: #ffffff;
-}
-body.checkout-page .birdseye-header,
-body.native-mobile-editor .birdseye-header {
-    position: absolute !important;
-}
+/* </editor-fold> */
+
 .no-header-page .main-wrap {
     padding-top: 80px;
 }
-body:not(.editor) .logo,
-body:not(.editor) .desktop-nav {
+.desktop-nav {
     opacity: 0;
-    -webkit-transition: opacity 600ms ease-in 300ms;
-    -moz-transition: opacity 600ms ease-in 300ms;
-    -ms-transition: opacity 600ms ease-in 300ms;
     transition: opacity 600ms ease-in 300ms;
 }
-body:not(.editor).fade-in .logo,
-body:not(.editor).fade-in .desktop-nav {
+.fade-in .desktop-nav {
     opacity: 1;
-}
-::-webkit-input-placeholder,
-:-moz-placeholder,
-::-moz-placeholder,
-:-ms-input-placeholder {
-    color: rgba(0, 0, 0, 0.4);
-}
-
-.button {
-    display: inline-block;
-    height: auto;
-    padding: 0;
-    background-image: none !important;
-    background-color: transparent;
-    color: #000000 !important;
-    border: 1px solid #000000 !important;
-    -webkit-transition: all 100ms ease-in-out;
-    -moz-transition: all 100ms ease-in-out;
-    -ms-transition: all 100ms ease-in-out;
-    transition: all 100ms ease-in-out;
-}
-.button:hover {
-    background-color: rgba(0, 0, 0, 0.05);
 }
 
 @media screen and (max-width: 992px) {
     font[size="1"] {
-        font-size: 50% !important;
+        font-size: 50%;
     }
     font[size="2"] {
-        font-size: 75% !important;
+        font-size: 75%;
     }
     font[size="3"] {
-        font-size: 125% !important;
+        font-size: 125%;
     }
     font[size="4"] {
-        font-size: 150% !important;
+        font-size: 150%;
     }
     font[size="5"] {
-        font-size: 175% !important;
+        font-size: 175%;
     }
     font[size="6"] {
-        font-size: 200% !important;
+        font-size: 200%;
     }
     font[size="7"] {
-        font-size: 250% !important;
+        font-size: 250%;
     }
     .container,
     .footer {
         overflow: hidden;
     }
-    .birdseye-header {
+    .nav-wrap {
         top: 0;
         left: 0;
-        padding: 5px 20px !important;
+        padding: 5px 20px !important /* Necessary to override existing settings with higher specificity*/;
         min-height: 50px;
     }
-    .birdseye-header .birdseye-header,
-    .birdseye-header .logo,
-    .birdseye-header .logo img {
-        max-height: 40px;
-    }
-    .birdseye-header .logo {
-        overflow: hidden;
-        padding-right: 25px;
-    }
-    .birdseye-header .logo a {
-        margin-left: 0;
-        margin-right: 0;
-        font-size: 1.1em;
-        line-height: 1.4em;
-    }
-    .birdseye-header .logo #title {
-        display: block;
-        max-width: 100%;
-        font-size: 1.1em !important;
-        line-height: 1.4em !important;
-    }
-    .birdseye-header .container {
+    .nav-wrap .container {
         min-height: 40px;
         max-height: inherit;
     }
-    .birdseye-header .hamburger {
-        display: table-cell;
+    .nav-wrap .hamburger {
+        display: inline;
         vertical-align: middle;
-    }
-    body.cart-full #mini-cart {
-        display: block !important;
-    }
-    body.cart-full .footer {
-        padding-bottom: 70px;
     }
     body.nav-open .mobile-nav {
         padding: 50px 0;
         max-height: 100vh;
     }
-    body.nav-open .birdseye-header label.hamburger span {
+    body.nav-open .nav-wrap label.hamburger span {
         position: relative;
         background: transparent;
     }
-    body.nav-open .birdseye-header label.hamburger span:before {
+    body.nav-open .nav-wrap label.hamburger span:before {
         top: 1px;
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
         transform: rotate(45deg);
     }
-    body.nav-open .birdseye-header label.hamburger span:after {
+    body.nav-open .nav-wrap label.hamburger span:after {
         top: -1px;
-        -webkit-transform: rotate(135deg);
-        -moz-transform: rotate(135deg);
-        -ms-transform: rotate(135deg);
         transform: rotate(135deg);
-    }
-    body.splash-page.nav-open .wrapper .main-wrap {
-        position: relative;
     }
     .hamburger {
         position: absolute;
@@ -619,9 +471,6 @@ body:not(.editor).fade-in .desktop-nav {
         height: 30px;
         padding: 10px;
         cursor: pointer;
-        -webkit-transition: all 300ms ease-in-out;
-        -moz-transition: all 300ms ease-in-out;
-        -ms-transition: all 300ms ease-in-out;
         transition: all 300ms ease-in-out;
     }
     .hamburger span,
@@ -633,9 +482,6 @@ body:not(.editor).fade-in .desktop-nav {
         height: 2px;
         background: #ffffff;
         content: "";
-        -webkit-transition: all 200ms ease-in-out;
-        -moz-transition: all 200ms ease-in-out;
-        -ms-transition: all 200ms ease-in-out;
         transition: all 200ms ease-in-out;
     }
     .hamburger span {
@@ -666,10 +512,8 @@ body:not(.editor).fade-in .desktop-nav {
         padding: 0;
         background: #ffffff;
         box-sizing: border-box;
-        -webkit-transition: all 300ms cubic-bezier(0, 0.085, 0.68, 0.53);
-        -moz-transition: all 300ms cubic-bezier(0, 0.085, 0.68, 0.53);
-        -ms-transition: all 300ms cubic-bezier(0, 0.085, 0.68, 0.53);
         transition: all 300ms cubic-bezier(0, 0.085, 0.68, 0.53);
+        text-align: center;
     }
     .mobile-nav .hamburger {
         top: 0;
@@ -681,17 +525,11 @@ body:not(.editor).fade-in .desktop-nav {
     .mobile-nav .hamburger span:before {
         top: 1px;
         background: #000000;
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
         transform: rotate(45deg);
     }
     .mobile-nav .hamburger span:after {
         top: -1px;
         background: #000000;
-        -webkit-transform: rotate(135deg);
-        -moz-transform: rotate(135deg);
-        -ms-transform: rotate(135deg);
         transform: rotate(135deg);
     }
     .mobile-nav ul {
@@ -701,7 +539,7 @@ body:not(.editor).fade-in .desktop-nav {
     }
     .mobile-nav li {
         position: relative;
-        display: block !important;
+        display: block;
         margin: 0;
         border: none;
         text-align: center;
@@ -714,6 +552,7 @@ body:not(.editor).fade-in .desktop-nav {
     .mobile-nav li > a.menu-item {
         position: relative;
         padding: 10px 0;
+        font-size: 12px;
         border: none;
     }
     .mobile-nav li > a.menu-subitem {
@@ -725,18 +564,12 @@ body:not(.editor).fade-in .desktop-nav {
         font-size: 14px;
         font-weight: 400;
         line-height: 1;
-        -webkit-transition: all 300ms ease;
-        -moz-transition: all 300ms ease;
-        -ms-transition: all 300ms ease;
         transition: all 300ms ease;
     }
     .mobile-nav li .menu-wrap {
-        display: block !important;
+        display: block;
         overflow: hidden;
         max-height: 0;
-        -webkit-transition: all 500ms ease-in-out 250ms;
-        -moz-transition: all 500ms ease-in-out 250ms;
-        -ms-transition: all 500ms ease-in-out 250ms;
         transition: all 500ms ease-in-out 250ms;
     }
     .mobile-nav li .menu-wrap li.nav-current > a.menu-subitem {
@@ -750,8 +583,12 @@ body:not(.editor).fade-in .desktop-nav {
     .mobile-nav li.menu-item-wrap > a.menu-item:hover,
     .mobile-nav li.menu-subitem-wrap > a.menu-subitem:hover {
         background: rgba(0, 0, 0, 0.05);
+        width: 100vw;
+        font-size: 12px;
         border: none;
     }
+
+    /* Likely not used */
     .mobile-nav li.has-submenu > span.icon-caret {
         position: absolute;
         top: 0;
@@ -761,292 +598,78 @@ body:not(.editor).fade-in .desktop-nav {
         height: 20px;
         padding: 5px 20px;
         cursor: pointer;
-        -webkit-transition: all 300ms ease-in-out;
-        -moz-transition: all 300ms ease-in-out;
-        -ms-transition: all 300ms ease-in-out;
         transition: all 300ms ease-in-out;
     }
+    /* Likely not used */
     .mobile-nav li.has-submenu > span.icon-caret:before {
         position: relative;
         display: block;
         color: #000000;
         font-size: 24px;
         content: "\203A";
-        -webkit-transform: rotate(90deg);
-        -moz-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
         transform: rotate(90deg);
     }
+
+    /* Likely not used */
     .mobile-nav li.has-submenu .menu-wrap.open {
         max-height: 1000px;
     }
     .mobile-nav li.nav-more {
-        display: none !important;
+        display: none;
     }
-    .banner-wrap .container {
+    .header-wrap .container {
         padding: 60px 20px;
         word-wrap: break-word;
     }
-    .banner-wrap .container h2 {
+    .header-wrap .container h2 {
         font-size: 50px;
     }
     .main-wrap .container {
         padding: 30px 20px;
     }
-    .footer-wrap .footer {
+    #footer-wrap .footer {
         width: 100%;
         padding: 30px 20px;
         box-sizing: border-box;
     }
-    #mini-cart {
-        position: fixed !important;
-        top: initial !important;
-        bottom: 0;
-        left: 0 !important;
-        z-index: 9;
-        width: 100%;
-        box-sizing: border-box;
-        border: none;
-        border-radius: 0;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        -webkit-transition: all 300ms ease-in-out;
-        -moz-transition: all 300ms ease-in-out;
-        -ms-transition: all 300ms ease-in-out;
-        transition: all 300ms ease-in-out;
-    }
-    #mini-cart .arrow-top:before,
-    #mini-cart .arrow-top:after,
-    #mini-cart .arrow-left:before,
-    #mini-cart .arrow-left:after {
-        border: none !important;
-    }
-    #mini-cart .product-list {
-        display: none;
-    }
     .no-header-page .main-wrap {
         padding-top: 50px;
     }
-    .no-header-page .birdseye-header {
+    .no-header-page .nav-wrap {
         padding: 5px 20px;
-    }
-    .splash-page .birdseye-header {
-        padding: 5px 20px;
-    }
-    .splash-page .hamburger {
-        right: 20px;
-        top: 10px;
-    }
-    .splash-page h2 {
-        font-size: 9vw;
-    }
-    .splash-page div.paragraph {
-        font-size: 16px;
-    }
-    .splash-page p {
-        font-size: 16px;
     }
 }
 @media screen and (max-width: 767px) {
     font[size="1"] {
-        font-size: 50% !important;
+        font-size: 50%;
     }
     font[size="2"] {
-        font-size: 75% !important;
+        font-size: 75%;
     }
     font[size="3"] {
-        font-size: 110% !important;
+        font-size: 110%;
     }
     font[size="4"] {
-        font-size: 120% !important;
+        font-size: 120%;
     }
     font[size="5"] {
-        font-size: 130% !important;
+        font-size: 130%;
     }
     font[size="6"] {
-        font-size: 140% !important;
+        font-size: 140%;
     }
     font[size="7"] {
-        font-size: 150% !important;
+        font-size: 150%;
     }
 
-    .banner-wrap .banner h2 {
+    .header-wrap .header h2 {
         font-size: 9vw;
     }
-
-    td.multicol-col {
-        float: none;
-        display: block;
-        width: 100% !important;
-        box-sizing: border-box;
-    }
 }
 
-div.paragraph ul,
-div.paragraph ol {
-    padding-left: 3em !important;
-    margin: 5px 0 !important;
-}
-div.paragraph li {
-    padding-left: 5px !important;
-    margin: 3px 0 0 !important;
-}
-div.paragraph ul,
-div.paragraph ul li {
-    list-style: disc outside !important;
-}
-div.paragraph ol,
-div.paragraph ol li {
-    list-style: decimal outside !important;
-}
 
-/* === Custom Overrides from Previous CSS === */
-/* Base text styles */
-#content,
-div.paragraph,
-p {
-  font-family: "Roboto" !important;
-}
-
-#content div.paragraph,
-#content p,
-#content,
-div.paragraph,
-p {
-  color: #626262 !important;
-}
-
-/* Headings and product blocks */
-#content h2,
-#content .product-long,
-#content .product-large,
-#content .product-small,
-h2 {
-    font-family: "Lora" !important;
-}
-
-/* The subtitle on index.html ("A Little About Myself") */
-#content h2,
-#content .product-long,
-#content .product-large,
-#content .product-small,
-h2 {
-  color: #2a2a2a;
-}
-
-/* Footer headings */
-.elements.footer h2,
-.elements.footer .product-long,
-.elements.footer .product-small {
-    font-family: "Roboto" !important;
-    font-weight: 700 !important;
-}
-
-/* Global reset for special block */
-{
-  font-family: "Roboto" !important;
-  color: #2a2a2a !important;
-  text-transform: uppercase !important;
-}
-
-/* Menu styles */
-.menu-default a {
-  font-family: "Roboto" !important;
-  font-weight: 700 !important;
-}
-.menu a {
-  font-family: "Roboto" !important;
-}
-
-/* Headline styles */
-.headline,
-.header-section .content-title {
-  font-family: Droid Serif !important;
-  color: #000000;
-  letter-spacing: 0 !important;
-}
-
-.headline-paragraph,
-.header-section .paragraph {}
-
-/* Button styles */
-.button-inner {
-  font-family: "Roboto" !important;
-  font-weight: 700 !important;
-}
-
-/* About Section */
-.about-container {
-    display: flex;
-    margin: 0 -15px;
-}
-
-.about-spacer {
-    width: 16.75%;
-    padding: 0 15px;
-}
-
-.about-content {
-    width: 83.25%;
-    padding: 0 15px;
-}
-
-/* Responsive adjustments */
-@media screen and (max-width: 768px) {
-    .about-container {
-        flex-direction: column;
-    }
-
-    .about-spacer,
-    .about-content {
-        width: 100%;
-        padding: 0;
-    }
-
-    .about-spacer {
-        height: 30px;
-    }
-}
-
-/* Responsive styles */
-@media screen and (min-width: 767px) {
-  #content div.paragraph,
-  #content p,
-  #content .product-block,
-  #content,
-  div.paragraph,
-  p {
-    font-size: 16px !important;
-    line-height: 23px !important;
-  }
-
-  #content h2,
-  #content .product-long,
-  #content .product-large,
-  #content .product-small,
-  h2 {
-    font-size: 42px !important;
-    line-height: 54px !important;
-  }
-
-  .elements.footer h2,
-  .elements.footer .product-long,
-  .elements.footer .product-large,
-  .elements.footer .product-small {
-    font-size: 10px !important;
-  }
-
-  {
-    font-size: 16px !important;
-  }
-
-  .menu-default a {
-    font-size: 14px !important;
-  }
-
-  .headline,
-  .header-section .content-title {
-    font-size: 65px !important;
-    line-height: 70px !important;
-  }
+/* The subtitle on index.html ("A Little About Myself") (a general content title, good for separating different paragraphs or groups) */
+#content h2 {
+    font-family: "Lora", sans-serif;
+    color: #2a2a2a;
 }
