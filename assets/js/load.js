@@ -1,7 +1,7 @@
 /* A script that loads common elements across the site */
 
 
-fetch("../template/index.html").then(response => {
+fetch("../templates/index.html").then(response => {
     return response.text();
 }).then(htmlContent => {
     let templateDoc = new DOMParser().parseFromString(htmlContent, "text/html");

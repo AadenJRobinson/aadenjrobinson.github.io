@@ -2,7 +2,7 @@ jQuery(function($) {
 
     // Fixed nav
     $.fn.checkHeaderPositioning = function(scrollEl, scrollClass) {
-        var $me = $(this);
+        let $me = $(this);
 
         if (!$me.length) {
           return;
@@ -17,7 +17,7 @@ jQuery(function($) {
 
   // Mobile sidebars
   $.fn.expandableSidebar = function(expandedClass) {
-    var $me = this;
+    let $me = this;
 
     $me.on('click', function() {
       if(!$me.hasClass(expandedClass)) {
@@ -30,8 +30,8 @@ jQuery(function($) {
 
   // Interval loop
   $.fn.intervalLoop = function(condition, action, duration, limit) {
-    var counter = 0;
-    var looper = setInterval(function(){
+    let counter = 0;
+    let looper = setInterval(function(){
       if (counter >= limit || $.fn.checkIfElementExists(condition)) {
         clearInterval(looper);
       } else {
@@ -46,9 +46,9 @@ jQuery(function($) {
     return $(selector).length;
   }
 
-  var birdseyeController = {
+  let birdseyeController = {
     init: function(opts) {
-      var base = this;
+      let base = this;
 
       $('body').checkHeaderPositioning(window, 'affix');
 
@@ -58,14 +58,14 @@ jQuery(function($) {
     },
 
     _addClasses: function() {
-      var base = this;
+      let base = this;
 
       // Add fade in class to nav + logo + header
         $('body').addClass('fade-in');
 
       // Add class to nav items with subnav
       $('.menu-default').find('li.menu-item-wrap').each(function(){
-        var $me = $(this);
+        let $me = $(this);
 
         if($me.children('.menu-wrap').length > 0) {
           $me.addClass('has-submenu');
@@ -75,7 +75,7 @@ jQuery(function($) {
 
       // Add class to subnav items with subnav
       $('.menu').find('li.menu-subitem-wrap').each(function(){
-        var $me = $(this);
+        let $me = $(this);
 
         if($me.children('.menu-wrap').length > 0) {
           $me.addClass('has-submenu');
@@ -91,33 +91,33 @@ jQuery(function($) {
       // Add placeholder text to inputs
       setTimeout(function(){
         $('.form-sublabel').each(function(){
-            var sublabel = $(this).text();
+            let sublabel = $(this).text();
             $(this).prev('.form-input').attr('placeholder', sublabel);
           });
         }, 1000);
     },
 
     _moveLogin: function() {
-      $('.wsite-accounts').appendTo('#account-links');
+      $('.accounts').appendTo('#account-links');
     },
 
     _moveFlyout: function() {
-      $('.wsite-search').appendTo('#search-links');
-      $('.wsite-search').addClass('flyout');
+      $('.search').appendTo('#search-links');
+      $('.search').addClass('flyout');
       $('<span class="icon-search"></span>').appendTo('#search-links');
 
-      $('.wsite-search').on('click', function(e){
+      $('.search').on('click', function(e){
         e.stopPropagation();
       });
 
       $(document).on('click', function(){
-        $('.wsite-search').removeClass('open');
+        $('.search').removeClass('open');
       });
 
       $('#search-links .icon-search').on('click', function(e){
         e.preventDefault();
         e.stopPropagation();
-        $('.wsite-search').toggleClass('open');
+        $('.search').toggleClass('open');
       });
     },
 
@@ -133,19 +133,6 @@ jQuery(function($) {
             }
         });
 
-        // Move cart + login
-        $.fn.intervalLoop('.mobile-nav #member-login', base._moveLogin, 800, 5);
-
-        // Move Flyout
-        $.fn.intervalLoop('.nav-wrap #menus', base._moveFlyout, 300, 8);
-
-        // Move Cart
-        $.fn.intervalLoop('.nav-wrap #mini-cart', base._moveCart, 300, 8);
-
-        // Check Cart
-
-        $.fn.intervalLoop('body.cart-full', base._checkCartItems, 300, 10);
-
         // Window scroll
 
         // Fixed header
@@ -155,7 +142,7 @@ jQuery(function($) {
 
         // Subnav toggle
         $('li.has-submenu span.icon-caret').on('click', function() {
-            var $me = $(this);
+            let $me = $(this);
 
             if($me.siblings('.menu-wrap').hasClass('open')) {
                 $me.siblings('.menu-wrap').removeClass('open');

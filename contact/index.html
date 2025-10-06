@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" title="theme-css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Droid+Serif:wght@400;700&display=swap&family=Lora:ital,wght@0,400..700;1,400..700" rel='stylesheet'>
+
+    <!-- Kept from the main CSS file for organization purposes -->
+    <style>
+        .form-flex {
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+        }
+        label,
+        input {
+            margin: 0 10px 10px;
+        }
+        .form-entries {
+            display: flex;
+            flex-direction: row;
+            align-items: center
+        }
+        #submit-button {
+            background-color: rgba(0, 0, 0, 5%);
+            margin: 10px 0 0 0;
+            border: 2px #626262 solid;
+            color: #2a2a2a;
+            width: 80px;
+            height: 35px;
+            padding: 0;
+            font-size: 18px;
+            font-weight: 100;
+            transition: all 0.4s ease;
+        }
+        #submit-button:hover {
+            background-color: rgba(88, 255, 219, 0.3);
+            border: 2px rgb(0, 167, 131) solid;
+        }
+        @media screen and (max-width: 767px) {
+            .form-flex {
+                display: block;
+            }
+            .form-entry {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .form-entries {
+                flex-direction: column;
+                align-items: center;
+            }
+            label {
+                margin-top: 20px;
+            }
+        }
+    </style>
+    
+    <script src='../assets/js/lib/jquery.js'></script>
+</head>
+<body>
+<div class="nav-wrap">
+    <div class="container">
+        <div class="desktop-nav"><ul class="menu-default">
+            <li class="menu-item-wrap"><a href="../" class="menu-item">Home</a></li>
+            <li class="menu-item-wrap"><a href="../experience" class="menu-item">Experience</a></li>
+            <li class="menu-item-wrap"><a href="../extracurriculars" class="menu-item">Extracurriculars</a></li>
+            <li class="menu-item-wrap"><a href="../projects" class="menu-item">Projects</a></li>
+            <li class="menu-item-wrap"><a href="../resume" class="menu-item">Resume</a></li>
+            <li class="menu-item-wrap active"><a href="../contact" class="menu-item">Contact</a></li>
+        </ul>
+        </div>
+        <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
+    </div>
+</div>
+
+
+<div class="header-wrap">
+    <div class="header-section">
+        <div class="container">
+            <div class="header">
+                <h1>Contact</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Form entry IDs: 831893963, 134043717, 679607162 -->
+<div class="main-wrap">
+    <div class="body-section">
+        <div class="container">
+            <div class="p" style="text-align: center">
+                <h4>If you wish to contact me, please provide your information below. We'll be in touch soon!</h4>
+                <div class="form-flex">
+                    <form id="contact-form" class="form-flex" style="width: 100%;" novalidate
+                          action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdmp8TsiKthOBWJal4vUQ7hfUhgIU5jOo4M3xui30swzrH74A/formResponse"
+                          method="POST"
+                          target="hidden-iframe">
+                        <div class="form-entries">
+                            <div class="form-flex form-entry">
+                                <label for="firstname">First Name</label>
+                                <input type="text" id="firstname" name="entry.831893963" autocomplete="given-name" required>
+                            </div>
+
+                            <div class="form-flex form-entry">
+                                <label for="lastname">Last Name</label>
+                                <input type="text" id="lastname" name="entry.134043717" autocomplete="family-name" required>
+                            </div>
+
+                            <div class="form-flex form-entry">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="entry.679607162" autocomplete="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-flex form-entry">
+                            <div id="form-message" role="status" aria-live="polite" style="color: #a00;"></div>
+                            <input id="submit-button" type="submit" value="Submit">
+                        </div>
+                    </form>
+                    <iframe name="hidden-iframe" style="display:none;"><!-- Necessary to prevent a redirect to forms.google.com--></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer-wrap"><!-- Filled by load.js --></div>
+
+<div class="mobile-nav">
+    <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
+    <ul class="menu-default">
+        <li class="menu-item-wrap"><a href="../" class="menu-item">Home</a></li>
+        <li class="menu-item-wrap"><a href="../experience" class="menu-item">Experience</a></li>
+        <li class="menu-item-wrap"><a href="../extracurriculars" class="menu-item">Extracurriculars</a></li>
+        <li class="menu-item-wrap"><a href="../projects" class="menu-item">Projects</a></li>
+        <li class="menu-item-wrap"><a href="../resume" class="menu-item">Resume</a></li>
+        <li class="menu-item-wrap active"><a href="../contact" class="menu-item">Contact</a></li>
+    </ul>
+</div>
+
+<script src="../assets/js/load.js"></script>
+<script src="../assets/js/menu.js"></script>
+<script>
+    // Simple client-side form handler
+
+    // Selects the first element in the document (or the first child in the element given) that matches the provided selector.
+    function $(selector, ctx){
+        return (ctx || document).querySelector(selector);
+    }
+
+    // Registers an event listener to the given element.
+    function on(element, event, func) {
+        element && element.addEventListener(event, func);
+    }
+
+    function validateEmail(email){
+        const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+        return regex.test(String(email).toLowerCase());
+    }
+
+    function setMessage(msg, type){
+        const box = $('#form-message');
+        if(!box) return;
+        box.style.color = type === 'error' ? '#a00' : '#0a0';
+        box.textContent = msg;
+    }
+
+    function handleSubmit(e){
+        const firstName = $('#firstname')?.value.trim();
+        const lastName = $('#lastname')?.value.trim();
+        const email = $('#email')?.value.trim();
+
+        if(!firstName && !lastName && !email) {
+            setMessage('Please fill out the required fields.', 'error');
+            e.preventDefault();
+            return;
+        }
+
+        if(!firstName) {
+            setMessage('Please enter your first name.', 'error');
+            e.preventDefault();
+            return;
+        } else if (!lastName) {
+            setMessage('Please enter your last name.', 'error');
+            e.preventDefault();
+            return;
+        } else if (!email) { setMessage('Please enter your email.', 'error');
+            e.preventDefault();
+            return;
+        } else if (!validateEmail(email)) {
+            setMessage('Please enter a valid email address.', 'error');
+            e.preventDefault();
+            return;
+        }
+
+        setMessage(`Thanks, ${firstName}! Your information was recorded.`, 'success');
+
+        setTimeout(() => $('#contact-form').reset(), 1000);
+    }
+
+    function init(){
+        const form = $('#contact-form');
+        if(!form) return;
+        on(form, 'submit', handleSubmit);
+    }
+
+    if(document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+</script>
+</body>
+</html>

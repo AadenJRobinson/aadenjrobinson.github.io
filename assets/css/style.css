@@ -1,4 +1,4 @@
-/*<editor-fold desc="Reset tags">*/
+/*<editor-fold desc="Reset tags" default-state="collapsed">*/
 /* Reset for common elements */
 body, html {
     margin: 0;
@@ -22,7 +22,7 @@ ul, ol {
 }
 
 /* Reset for block elements */
-div, p, pre, form {
+div, div.p, pre, form {
     margin: 0;
     padding: 0;
 }
@@ -144,16 +144,38 @@ a {
     text-decoration: none;
 }
 
-h2 {
+/* Title */
+h1 {
+    font-weight: 100;
+    margin: 15px auto;
+    font-size: 65px;
+    line-height: 70px;
+    font-family: "Droid Serif", sans-serif;
     color: #000000;
-    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0;
+}
+
+/* Subtitle */
+h2 {
+    color: #2a2a2a;
+    font-family: "Lora", sans-serif;
     font-size: 42px;
     line-height: 54px;
     font-weight: 700;
     margin: 0 auto 30px;
 }
 
-p {
+/* Smaller subtitle (more like big paragraph text) */
+h4 {
+    font-weight: 200;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    color: #2a2a2a;
+    margin-bottom: 50px
+}
+
+/* Dividers are used as paragraphs to allow block-level elements (such as lists) to be placed inside them. */
+div.p {
     font-weight: 500;
     margin: 0 auto 30px;
 
@@ -164,11 +186,24 @@ p {
     color: #626262;
 }
 
-p a {
+/* Link styles for paragraphs */
+div.p a {
     color: inherit;
-    font-weight: 600;
     text-decoration: underline;
-    transition: opacity 300ms ease-in-out;
+    transition: all 200ms ease-in-out;
+}
+div.p a:link {
+    color: #0000ee;
+}
+div.p a:visited {
+    color: #551a8b;
+}
+div.p a:hover {
+    color: #e70707;
+}
+
+div.p ul {
+    list-style: disc inside;
 }
 
 /* Background image */
@@ -176,6 +211,7 @@ p a {
     background: url(../images/geometric.jpg) no-repeat top center transparent;
     height: 600px;
     background-size: cover;
+    width: 100vw;
 }
 
 /* Blurs the background and adds a gradient */
@@ -233,19 +269,8 @@ p a {
     transition: opacity 500ms ease;
 }
 
-/* Title text */
-.header-wrap h2 {
-    font-weight: 100;
-    margin: 15px auto;
-    font-size: 65px;
-    line-height: 70px;
-    font-family: "Droid Serif", sans-serif;
-    color: #000000;
-    letter-spacing: 0;
-}
-
 /* Title area paragraphs; not used */
-.header-wrap p {
+.header-wrap div.p {
     color: inherit;
     font-family: "Montserrat", sans-serif;
     font-size: 12px;
@@ -290,7 +315,7 @@ p a {
 }
 
 #footer-wrap h2,
-#footer-wrap p {
+#footer-wrap div.p {
     margin: 0 auto 20px;
 }
 
@@ -621,7 +646,7 @@ body.affix.alt-nav-on .nav-wrap {
         padding: 60px 20px;
         word-wrap: break-word;
     }
-    .header-wrap .container h2 {
+    h1 {
         font-size: 50px;
     }
     .main-wrap .container {
@@ -661,15 +686,7 @@ body.affix.alt-nav-on .nav-wrap {
     font[size="7"] {
         font-size: 150%;
     }
-
-    .header-wrap .header h2 {
-        font-size: 9vw;
+    h1 {
+        font-size: clamp(10px, 9vw, 50px);
     }
-}
-
-
-/* The subtitle on index.html ("A Little About Myself") (a general content title, good for separating different paragraphs or groups) */
-#content h2 {
-    font-family: "Lora", sans-serif;
-    color: #2a2a2a;
 }
