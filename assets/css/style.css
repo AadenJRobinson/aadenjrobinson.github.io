@@ -264,9 +264,6 @@ div.p ul {
 /* Aligns title text */
 .header-wrap .header {
     text-align: center;
-
-    /* Not used */
-    transition: opacity 500ms ease;
 }
 
 /* Title area paragraphs; not used */
@@ -304,7 +301,7 @@ div.p ul {
     margin: 0 auto;
 }
 
-/*<editor-fold desc="Footer settings">*/
+/*<editor-fold desc="Footer properties">*/
 #footer-wrap {
     width: 100%;
     font-size: 14px;
@@ -324,7 +321,7 @@ div.p ul {
 }
 /*</editor-fold>*/
 
-/* Navbar properties */
+/* <editor-fold desc="Navbar properties"> */
 .nav-wrap {
     position: fixed;
     top: 0;
@@ -339,21 +336,27 @@ div.p ul {
 
     backface-visibility: hidden;
 }
-.nav-wrap .container {
+.nav-wrap .container /* The container specification seems unnecessary, so this could be merged with the above selector */ {
     display: block;
     width: 100%;
     max-height: 80px;
-    overflow: hidden;
+    overflow: visible;
 }
 .nav-wrap .hamburger {
     display: none;
     box-sizing: initial;
 }
 
+/* Fix FA icons in the navbar */
+:is(.desktop-nav, .mobile-nav) i:is(.fa-solid, .fa-regular) {
+    line-height: 12px;
+}
+
 .desktop-nav, .mobile-nav {
     display: block;
     text-align: right;
 }
+
 :is(.desktop-nav, .mobile-nav) ul {
     display: inline-block;
     max-width: calc(100vw - 480px);
@@ -361,11 +364,13 @@ div.p ul {
     padding: 0;
     text-align: right;
 }
+
 :is(.desktop-nav, .mobile-nav) li {
     display: inline-block;
     margin: 5px 5px 5px 0;
 }
-:is(.desktop-nav, .mobile-nav) .menu-item {
+
+:is(.desktop-nav, .mobile-nav) .nav-item {
     display: block;
     padding: 12px 20px;
     border: 1px solid transparent;
@@ -377,26 +382,86 @@ div.p ul {
     text-transform: uppercase;
     transition: opacity 300ms ease;
 }
-:is(.desktop-nav, .mobile-nav) li.active > .menu-item {
+
+:is(.desktop-nav, .mobile-nav) li.active > .nav-item {
     border-color: inherit;
+    border-radius: 5px;
 }
 
-:is(.desktop-nav, .mobile-nav) li .menu-item:hover {
-    opacity: 50%;
+/* Nav item hover effect */
+.desktop-nav li a.nav-item {
+    position: relative;
+}
+
+.desktop-nav li a.nav-item::before, li a.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #56e3e8, #135cfc);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0) translate3d(0,0,0) /* Included to ensure the effect is uniform */;
+    transform-origin: right;
+    transition: transform 0.4s ease-out;
+}
+.desktop-nav li a.nav-item::before {
+    top: -5px;
+    transform-origin: left;
+    background: linear-gradient(to left, #56e3e8, #135cfc);
+}
+.desktop-nav li a.nav-item:hover::before,
+.desktop-nav li a.nav-item:hover::after,
+.desktop-nav li.more-subnav-wrap:hover a.nav-item::before {
+    transform: scaleX(1) translate3d(0,0,0) /* Included to ensure the effect is uniform */;
+}
+
+.desktop-nav li .more-subnav-wrap a.nav-item::after {
+    display: none;
+}
+.desktop-nav li .more-subnav-wrap a.nav-item::before {
+    transform-origin: center;
+}
+
+.desktop-nav li.active a.nav-item {
+    transition: border 0.3s ease;
+}
+.desktop-nav li.active a.nav-item:hover {
+    border: 1px rgba(0, 0, 0, 0%) solid;
+}
+
+/* Simple opacity effect for the mobile version */
+.mobile-nav li a.nav-item:hover {
+    opacity: 0.5;
+}
+
+/* Default display for the more subnav (none) */
+li.more-subnav-wrap {
+    display: none;
+}
+div.more-subnav-content {
+    visibility: hidden;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+}
+.subnav-item {
+    display: none;
 }
 
 .mobile-nav {
     display: none;
 }
+/* </editor-fold> */
 
-/*<editor-fold desc="Scrolled navbar settings"> */
+/*<editor-fold desc="Scrolled navbar properties"> */
 body.affix .nav-wrap {
     position: fixed;
     padding: 10px 40px;
 }
 
 
-body.affix .nav-wrap .menu-item {
+body.affix .nav-wrap .nav-item {
     padding: 10px 20px;
 }
 
@@ -421,15 +486,53 @@ body.affix.alt-nav-on .nav-wrap {
 
 /* </editor-fold> */
 
-.no-header-page .main-wrap {
-    padding-top: 80px;
-}
 .desktop-nav {
     opacity: 0;
     transition: opacity 600ms ease-in 300ms;
+    height: 50px;
+}
+body.affix .desktop-nav {
+    height: 46px;
 }
 .fade-in .desktop-nav {
     opacity: 1;
+}
+
+@media screen and (max-width: 1263px) {
+    /* Todo: add display for active page in more subnav */
+    li.more-subnav-wrap {
+        display: inline-block;
+    }
+    li.more-subnav-wrap > div.more-subnav-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    li.more-subnav-wrap .more-subnav-content {
+        position: absolute;
+        text-align: center;
+        border-radius: 5px;
+        background: #eeeeee;
+        color: #000000;
+        top: 100%;
+        width: 100%;
+    }
+    li.more-subnav-wrap:hover .more-subnav-content {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .subnav-item {
+        font-weight: 500;
+        font-size: 14px;
+        font-family: Roboto, sans-serif;
+        padding: 5px 0;
+        transition: opacity 300ms ease-in-out;
+    }
+    .subnav-item:hover {
+        opacity: 0.5;
+    }
 }
 
 @media screen and (max-width: 992px) {
@@ -569,79 +672,20 @@ body.affix.alt-nav-on .nav-wrap {
         border: none;
         text-align: center;
     }
-    .mobile-nav li .menu-link-styles {
-        position: relative;
-        padding: 10px 0;
-        border: none;
-    }
-    .mobile-nav li > a.menu-item {
+    .mobile-nav li > a.nav-item {
         position: relative;
         padding: 10px 0;
         font-size: 12px;
         border: none;
     }
-    .mobile-nav li > a.menu-subitem {
-        display: block;
-        position: relative;
-        padding: 10px 0;
-        color: rgba(0, 0, 0, 0.6);
-        border: none;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1;
-        transition: all 300ms ease;
-    }
-    .mobile-nav li .menu-wrap {
-        display: block;
-        overflow: hidden;
-        max-height: 0;
-        transition: all 500ms ease-in-out 250ms;
-    }
-    .mobile-nav li .menu-wrap li.nav-current > a.menu-subitem {
-        background: rgba(0, 0, 0, 0.05);
-        border: none;
-    }
-    .mobile-nav li .menu-wrap .menu-arrow {
-        display: none;
-    }
-    .mobile-nav li.menu-item-wrap.active > a.menu-item,
-    .mobile-nav li.menu-item-wrap > a.menu-item:hover,
-    .mobile-nav li.menu-subitem-wrap > a.menu-subitem:hover {
+    .mobile-nav li.nav-item-wrap.active > a.nav-item,
+    .mobile-nav li.nav-item-wrap > a.nav-item:hover {
         background: rgba(0, 0, 0, 0.05);
         width: 100vw;
         font-size: 12px;
         border: none;
     }
 
-    /* Likely not used */
-    .mobile-nav li.has-submenu > span.icon-caret {
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: block;
-        width: 20px;
-        height: 20px;
-        padding: 5px 20px;
-        cursor: pointer;
-        transition: all 300ms ease-in-out;
-    }
-    /* Likely not used */
-    .mobile-nav li.has-submenu > span.icon-caret:before {
-        position: relative;
-        display: block;
-        color: #000000;
-        font-size: 24px;
-        content: "\203A";
-        transform: rotate(90deg);
-    }
-
-    /* Likely not used */
-    .mobile-nav li.has-submenu .menu-wrap.open {
-        max-height: 1000px;
-    }
-    .mobile-nav li.nav-more {
-        display: none;
-    }
     .header-wrap .container {
         padding: 60px 20px;
         word-wrap: break-word;
@@ -657,13 +701,8 @@ body.affix.alt-nav-on .nav-wrap {
         padding: 30px 20px;
         box-sizing: border-box;
     }
-    .no-header-page .main-wrap {
-        padding-top: 50px;
-    }
-    .no-header-page .nav-wrap {
-        padding: 5px 20px;
-    }
 }
+
 @media screen and (max-width: 767px) {
     font[size="1"] {
         font-size: 50%;

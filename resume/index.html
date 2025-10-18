@@ -35,22 +35,35 @@
         }
     </style>
 
-    <script src='../assets/js/lib/jquery.js'></script>
+    <link rel="stylesheet" href="../assets/fontawesome/fa.min.css">
 </head>
 <body>
 <div class="nav-wrap">
     <div class="container">
         <div class="desktop-nav">
-            <ul class="menu-default">
-                <li class="menu-item-wrap"><a href="../" class="menu-item">Home</a></li>
-                <li class="menu-item-wrap"><a href="../experience" class="menu-item">Experience</a></li>
-                <li class="menu-item-wrap"><a href="../extracurriculars" class="menu-item">Extracurriculars</a></li>
-                <li class="menu-item-wrap"><a href="../projects" class="menu-item">Projects</a></li>
-                <li class="menu-item-wrap active"><a href="" class="menu-item">Resume</a></li>
-                <li class="menu-item-wrap"><a href="../contact" class="menu-item">Contact</a></li>
+            <ul class="nav-default">
+                <li class="nav-item-wrap"><a href="../" class="nav-item">Home</a></li>
+                <li class="nav-item-wrap"><a href="../experience" class="nav-item">Experience</a></li>
+                <li class="nav-item-wrap"><a href="../extracurriculars" class="nav-item">Extracurriculars</a></li>
+                <li class="nav-item-wrap"><a href="../projects" class="nav-item">Projects</a></li>
+                <li class="nav-item-wrap active"><a href="" class="nav-item">Resume</a></li>
+                <li class="nav-item-wrap"><a href="../contact" class="nav-item">Contact</a></li>
+                <li class="nav-item-wrap more-subnav-wrap">
+                    <div class="more-subnav-wrap">
+                        <a class="nav-item">More <i class="fa-solid fa-caret-down"></i></a>
+                        <div style="position: relative; width: 100%">
+                            <div class="more-subnav-content">
+                                <a href="../extracurriculars" class="subnav-item">Extracurriculars</a>
+                                <a href="../projects" class="subnav-item">Projects</a>
+                                <a href="../resume" class="subnav-item">Resume</a>
+                                <a href="../contact" class="subnav-item">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
-        <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
+        <a class="hamburger" href="#"><span></span></a>
     </div>
 </div>
 <div class="header-wrap">
@@ -97,14 +110,14 @@
 <div id="footer-wrap"><!-- Filled by load.js --></div>
 
 <div class="mobile-nav">
-    <a class="hamburger" aria-label="Menu" href="#"><span></span></a>
-    <ul class="menu-default">
-        <li class="menu-item-wrap"><a href="../" class="menu-item">Home</a></li>
-        <li class="menu-item-wrap"><a href="../experience" class="menu-item">Experience</a></li>
-        <li class="menu-item-wrap"><a href="../extracurriculars" class="menu-item">Extracurriculars</a></li>
-        <li class="menu-item-wrap"><a href="../projects" class="menu-item">Projects</a></li>
-        <li class="menu-item-wrap active"><a href="" class="menu-item">Resume</a></li>
-        <li class="menu-item-wrap"><a href="../contact" class="menu-item">Contact</a></li>
+    <a class="hamburger" href="#"><span></span></a>
+    <ul class="nav-default">
+        <li class="nav-item-wrap"><a href="../" class="nav-item">Home</a></li>
+        <li class="nav-item-wrap"><a href="../experience" class="nav-item">Experience</a></li>
+        <li class="nav-item-wrap"><a href="../extracurriculars" class="nav-item">Extracurriculars</a></li>
+        <li class="nav-item-wrap"><a href="../projects" class="nav-item">Projects</a></li>
+        <li class="nav-item-wrap active"><a href="" class="nav-item">Resume</a></li>
+        <li class="nav-item-wrap"><a href="../contact" class="nav-item">Contact</a></li>
     </ul>
 </div>
 <script src="../assets/js/load.js"></script>

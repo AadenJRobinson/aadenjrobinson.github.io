@@ -1,172 +1,72 @@
-jQuery(function($) {
-
-    // Fixed nav
-    $.fn.checkHeaderPositioning = function(scrollEl, scrollClass) {
-        let $me = $(this);
-
-        if (!$me.length) {
-          return;
-        }
-
-        if($(scrollEl).scrollTop() > 50) {
-            $me.addClass(scrollClass);
-        } else if($(scrollEl).scrollTop() === 0) {
-            $me.removeClass(scrollClass);
-        }
-    };
-
-  // Mobile sidebars
-  $.fn.expandableSidebar = function(expandedClass) {
-    let $me = this;
-
-    $me.on('click', function() {
-      if(!$me.hasClass(expandedClass)) {
-        $me.addClass(expandedClass);
-      } else {
-        $me.removeClass(expandedClass);
-      }
-    });
-  }
-
-  // Interval loop
-  $.fn.intervalLoop = function(condition, action, duration, limit) {
-    let counter = 0;
-    let looper = setInterval(function(){
-      if (counter >= limit || $.fn.checkIfElementExists(condition)) {
-        clearInterval(looper);
-      } else {
-        //action();
-        counter++;
-      }
-    }, duration);
-  }
-
-  // Check if element exists
-  $.fn.checkIfElementExists = function(selector) {
-    return $(selector).length;
-  }
-
-  let birdseyeController = {
-    init: function(opts) {
-      let base = this;
-
-      $('body').checkHeaderPositioning(window, 'affix');
-
-      // Add classes to elements
-      base._addClasses();
-      base._attachEvents();
-    },
-
-    _addClasses: function() {
-      let base = this;
-
-      // Add fade in class to nav + logo + header
-        $('body').addClass('fade-in');
-
-      // Add class to nav items with subnav
-      $('.menu-default').find('li.menu-item-wrap').each(function(){
-        let $me = $(this);
-
-        if($me.children('.menu-wrap').length > 0) {
-          $me.addClass('has-submenu');
-          $('<span class="icon-caret"></span>').insertAfter($me.children('a.menu-item'));
-        }
-      });
-
-      // Add class to subnav items with subnav
-      $('.menu').find('li.menu-subitem-wrap').each(function(){
-        let $me = $(this);
-
-        if($me.children('.menu-wrap').length > 0) {
-          $me.addClass('has-submenu');
-          $('<span class="icon-caret"></span>').insertAfter($me.children('a.menu-subitem'));
-        }
-      });
-
-        // Keep subnav open if submenu item is active
-        if ($(window).width() < 1024) {
-          $('li.menu-subitem-wrap.nav-current').parents('.menu-wrap').addClass('open');
-        }
-
-      // Add placeholder text to inputs
-      setTimeout(function(){
-        $('.form-sublabel').each(function(){
-            let sublabel = $(this).text();
-            $(this).prev('.form-input').attr('placeholder', sublabel);
-          });
-        }, 1000);
-    },
-
-    _moveLogin: function() {
-      $('.accounts').appendTo('#account-links');
-    },
-
-    _moveFlyout: function() {
-      $('.search').appendTo('#search-links');
-      $('.search').addClass('flyout');
-      $('<span class="icon-search"></span>').appendTo('#search-links');
-
-      $('.search').on('click', function(e){
-        e.stopPropagation();
-      });
-
-      $(document).on('click', function(){
-        $('.search').removeClass('open');
-      });
-
-      $('#search-links .icon-search').on('click', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        $('.search').toggleClass('open');
-      });
-    },
-
-    _attachEvents: function() {
-        const base = this;
-
-        $('.hamburger').on('click', function(e) {
-            e.preventDefault();
-            if (!$('body').hasClass('nav-open')) {
-                $('body').addClass('nav-open');
-            } else {
-                $('body').removeClass('nav-open');
-            }
-        });
-
-        // Window scroll
-
-        // Fixed header
-        $(window).on('scroll', function() {
-          $('body').checkHeaderPositioning(window, 'affix');
-        });
-
-        // Subnav toggle
-        $('li.has-submenu span.icon-caret').on('click', function() {
-            let $me = $(this);
-
-            if($me.siblings('.menu-wrap').hasClass('open')) {
-                $me.siblings('.menu-wrap').removeClass('open');
-            } else {
-                $me.siblings('.menu-wrap').addClass('open');
-            }
-        });
-
-      // Store category dropdown
-      $('.com-sidebar').expandableSidebar('sidebar-expanded');
-
-      // Search filters dropdown
-      $('#search-sidebar').expandableSidebar('sidebar-expanded');
-
-      // Init fancybox swipe on mobile
-      if ('ontouchstart' in window) {
-        $('body').on('click', 'a.w-fancybox', function() {
-          base._initSwipeGallery();
-        });
-      }
+function $(selector, ctx) {
+    // Returns all elements with the given selector if flagged with -f (defaults to querySelector)
+    let findAll = / -f$/;
+    return findAll.test(selector) ? (ctx || document).querySelectorAll(selector.split(findAll)[0]) : (ctx || document).querySelector(selector);
+}
+const deviceChecker = {
+    regex1: /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i,
+    regex2: /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/i,
+    isMobile: function (userAgent) {
+        return this.regex1.test(userAgent) || this.regex2.test(userAgent);
     }
-  }
+};
 
-  $(document).ready(function(){
-    birdseyeController.init();
-  });
+document.addEventListener('DOMContentLoaded', function() {
+    let body = $('body');
+    body.classList.add('fade-in');
+    scrollNav();
+    collapseNav();
+    registerEvents();
+
+    function scrollNav() {
+        let scrollClass = 'affix';
+        if(window.scrollY > 50) body.classList.add(scrollClass);
+        else if(window.scrollY === 0) body.classList.remove(scrollClass);
+    }
+
+    function collapseNav() {
+        // Code will only execute if the hamburger menu is enabled (desktop nav is disabled)
+        if($('.desktop-nav').style.display === 'none') return;
+        let nav = $('.nav-default');
+
+        Array.from(nav.children).forEach(el => {
+            if(el.style.display === 'none') el.style.display = '';
+        });
+
+        let counter = 2;
+        let moreMenu = nav.children[nav.children.length - 1];
+        let removedEls = [];
+        while(nav.offsetHeight > 50) {
+            let removeEl = nav.children[nav.children.length - counter];
+            if(removeEl === moreMenu) {
+                counter++;
+                removeEl = nav.children[nav.children.length - counter];
+            }
+            removeEl.style.display = 'none';
+
+            removedEls.push($('a', removeEl));
+            counter++;
+        }
+        let moreNavContent = Array.from($('.nav-default .more-subnav-wrap > div a -f'));
+        moreNavContent.reverse();
+        let moreNavContentHTML = [];
+        moreNavContent.forEach(el => moreNavContentHTML.push(el.innerHTML));
+        for(let i = 0; i < removedEls.length; i++) {
+            if(moreNavContentHTML.includes(removedEls[i].innerHTML)) {
+                moreNavContent[i].style.display = 'block';
+            }
+        }
+    }
+
+    function registerEvents() {
+        $('.hamburger -f').forEach(function(hamburger) {
+            hamburger.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (!body.classList.contains('nav-open')) body.classList.add('nav-open');
+                else body.classList.remove('nav-open');
+            });
+        });
+        window.addEventListener('scroll', scrollNav);
+        window.addEventListener('resize', collapseNav);
+    }
 });

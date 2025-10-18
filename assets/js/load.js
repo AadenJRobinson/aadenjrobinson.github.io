@@ -1,5 +1,4 @@
-/* A script that loads common elements across the site */
-
+/* A script that loads common elements across the site (currently just the footer) */
 
 fetch("../templates/index.html").then(response => {
     return response.text();
