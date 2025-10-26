@@ -14,9 +14,19 @@ const deviceChecker = {
 document.addEventListener('DOMContentLoaded', function() {
     let body = $('body');
     body.classList.add('fade-in');
+
+    $('.hamburger -f').forEach(function(hamburger) {
+        hamburger.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (!body.classList.contains('nav-open')) body.classList.add('nav-open');
+            else body.classList.remove('nav-open');
+        });
+    });
+    window.addEventListener('scroll', scrollNav);
+    window.addEventListener('resize', collapseNav);
+
     scrollNav();
     collapseNav();
-    registerEvents();
 
     function scrollNav() {
         let scrollClass = 'affix';
@@ -25,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function collapseNav() {
-        // Code will only execute if the hamburger menu is enabled (desktop nav is disabled)
+        // Code will only execute if the hamburger menu is disabled
         if($('.desktop-nav').style.display === 'none') return;
         let nav = $('.desktop-nav ul');
         let moreMenu = nav.children[nav.children.length - 1];
@@ -65,17 +75,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
-    }
-
-    function registerEvents() {
-        $('.hamburger -f').forEach(function(hamburger) {
-            hamburger.addEventListener('click', function (e) {
-                e.preventDefault();
-                if (!body.classList.contains('nav-open')) body.classList.add('nav-open');
-                else body.classList.remove('nav-open');
-            });
-        });
-        window.addEventListener('scroll', scrollNav);
-        window.addEventListener('resize', collapseNav);
     }
 });

@@ -1,28 +1,20 @@
 /*<editor-fold desc="Reset tags" default-state="collapsed">*/
-/* Reset for common elements */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
 }
-
-/* Reset for headings */
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
 }
-
-
-/* Reset for lists */
 ul, ol {
     margin: 0;
     padding: 0;
     list-style: none;
 }
-
-/* Reset for block elements */
-div, div.p, pre, form {
+div, div.p, form {
     margin: 0;
     padding: 0;
 }
@@ -151,7 +143,7 @@ div.p ul {
     list-style: disc inside;
 }
 
-/* Header styling */
+/* Header image and styling */
 .header-wrap {
     position: relative;
     background: url(../images/geometric.jpg) no-repeat top center transparent;
