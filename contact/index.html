@@ -61,9 +61,9 @@
     <link rel="stylesheet" href="../assets/fontawesome/fa.min.css">
 </head>
 <body>
-<div class="nav-wrap">
+<div class="desktop-nav">
     <div class="container">
-        <div class="desktop-nav"><ul class="nav-default">
+        <ul>
             <li class="nav-item-wrap"><a href="../" class="nav-item">Home</a></li>
             <li class="nav-item-wrap"><a href="../experience" class="nav-item">Experience</a></li>
             <li class="nav-item-wrap"><a href="../extracurriculars" class="nav-item">Extracurriculars</a></li>
@@ -78,62 +78,54 @@
                             <a href="../extracurriculars" class="subnav-item">Extracurriculars</a>
                             <a href="../projects" class="subnav-item">Projects</a>
                             <a href="../resume" class="subnav-item">Resume</a>
-                            <a href="../contact" class="subnav-item">Contact</a>
+                            <a href="../contact" class="subnav-item active"><span>Contact</span></a>
                         </div>
                     </div>
                 </div>
             </li>
         </ul>
-        </div>
         <a class="hamburger" href="#"><span></span></a>
     </div>
 </div>
 
 
 <div class="header-wrap">
-    <div class="header-section">
-        <div class="container">
-            <div class="header">
-                <h1>Contact</h1>
-            </div>
-        </div>
+    <div class="container">
+        <h1>Contact</h1>
     </div>
 </div>
 <!-- Form entry IDs: 831893963, 134043717, 679607162 -->
 <div class="main-wrap">
-    <div class="body-section">
-        <div class="container">
-            <div class="p" style="text-align: center">
-                <h4>If you wish to contact me, please provide your information below. We'll be in touch soon!</h4>
-                <div class="form-flex">
-                    <form id="contact-form" class="form-flex" style="width: 100%;" novalidate
-                          action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdmp8TsiKthOBWJal4vUQ7hfUhgIU5jOo4M3xui30swzrH74A/formResponse"
-                          method="POST"
-                          target="hidden-iframe">
-                        <div class="form-entries">
-                            <div class="form-flex form-entry">
-                                <label for="firstname">First Name</label>
-                                <input type="text" id="firstname" name="entry.831893963" autocomplete="given-name" required>
-                            </div>
-
-                            <div class="form-flex form-entry">
-                                <label for="lastname">Last Name</label>
-                                <input type="text" id="lastname" name="entry.134043717" autocomplete="family-name" required>
-                            </div>
-
-                            <div class="form-flex form-entry">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="entry.679607162" autocomplete="email" required>
-                            </div>
+    <div class="container">
+        <div class="p" style="text-align: center">
+            <h4>If you wish to contact me, please provide your information below. We'll be in touch soon!</h4>
+            <div class="form-flex">
+                <form id="contact-form" class="form-flex" style="width: 100%;" novalidate
+                      action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdmp8TsiKthOBWJal4vUQ7hfUhgIU5jOo4M3xui30swzrH74A/formResponse"
+                      method="POST"
+                      target="hidden-iframe">
+                    <div class="form-entries">
+                        <div class="form-flex form-entry">
+                            <label for="firstname">First Name</label>
+                            <input type="text" id="firstname" name="entry.831893963" autocomplete="given-name" required>
                         </div>
+
+                         <div class="form-flex form-entry">
+                             <label for="lastname">Last Name</label>
+                             <input type="text" id="lastname" name="entry.134043717" autocomplete="family-name" required>
+                         </div>
 
                         <div class="form-flex form-entry">
-                            <div id="form-message" role="status" style="color: #a00;"></div>
-                            <input id="submit-button" type="submit" value="Submit">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="entry.679607162" autocomplete="email" required>
                         </div>
-                    </form>
-                    <iframe name="hidden-iframe" style="display:none;"><!-- Necessary to prevent a redirect to forms.google.com--></iframe>
-                </div>
+                    </div>
+                    <div class="form-flex form-entry">
+                        <div id="form-message" role="status" style="color: #a00;"></div>
+                        <input id="submit-button" type="submit" value="Submit">
+                    </div>
+                </form>
+                <iframe name="hidden-iframe" style="display:none;"><!-- Necessary to prevent a redirect to forms.google.com--></iframe>
             </div>
         </div>
     </div>
@@ -143,7 +135,7 @@
 
 <div class="mobile-nav">
     <a class="hamburger" href="#"><span></span></a>
-    <ul class="nav-default">
+    <ul>
         <li class="nav-item-wrap"><a href="../" class="nav-item">Home</a></li>
         <li class="nav-item-wrap"><a href="../experience" class="nav-item">Experience</a></li>
         <li class="nav-item-wrap"><a href="../extracurriculars" class="nav-item">Extracurriculars</a></li>

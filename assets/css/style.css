@@ -27,100 +27,52 @@ div, div.p, pre, form {
     padding: 0;
 }
 /*</editor-fold>*/
-/*<editor-fold desc="Font definitions">*/
+/*<editor-fold desc="Birdseye font">*/
 @font-face {
     font-family: "Birdseye";
-    src: url("../fonts/17c55b27-e9ab-43cd-b948-d49f97480d68d41d.eot?#iefix?1717543760");
-    src: url("../fonts/17c55b27-e9ab-43cd-b948-d49f97480d68d41d.eot?#iefix?1717543760")
-    format("eot"),
-    url("../fonts/2e3f5cb9-101f-46cf-a7b3-dfaa58261e033a50.woff2?1717543760")
-    format("woff2"),
-    url("../fonts/fa19948e-5e38-4909-b31e-41acd170d6f23a50.woff?1717543760")
-    format("woff"),
-    url("../fonts/6de0ce4d-9278-467b-b96f-c1f5f0a4c3753a50.ttf?1717543760")
-    format("truetype"),
-    url("../fonts/9fd4ea0c-b19a-4b21-9fdf-37045707dd78.svg#9fd4ea0c-b19a-4b21-9fdf-37045707dd78?1717543760")
-    format("svg");
+    src: url("../fonts/birdseye-thin.woff2") format("woff2"),
+    url("../fonts/birdseye-thin.woff") format("woff"),
+    url("../fonts/birdseye-thin.ttf") format("truetype");
     font-weight: 100;
     font-style: normal;
 }
 @font-face {
     font-family: "Birdseye";
-    src: url("../fonts/8b498c39-fabe-4789-bb81-5e37c9ecddd3d41d.eot?#iefix?1717543760");
-    src: url("../fonts/8b498c39-fabe-4789-bb81-5e37c9ecddd3d41d.eot?#iefix?1717543760")
-    format("eot"),
-    url("../fonts/1c6c1881-23c9-4d6a-a018-759d1c9ded153a50.woff2?1717543760")
-    format("woff2"),
-    url("../fonts/f0d655c5-a88a-49ad-bb29-f3b5cca417313a50.woff?1717543760")
-    format("woff"),
-    url("../fonts/3a561c83-40d4-4868-8255-e8455eb009c43a50.ttf?1717543760")
-    format("truetype"),
-    url("../fonts/3966f856-9dcf-48e7-88e7-7400f1b7d619.svg#3966f856-9dcf-48e7-88e7-7400f1b7d619?1717543760")
-    format("svg");
+    src: url("../fonts/birdseye-thin-italic.woff2") format("woff2"),
+    url("../fonts/birdseye-thin-italic.woff") format("woff"),
+    url("../fonts/birdseye-thin-italic.ttf") format("truetype");
     font-weight: 100;
     font-style: italic;
 }
 @font-face {
     font-family: "Birdseye";
-    src: url("../fonts/e9167238-3b3f-4813-a04a-a384394eed42d41d.eot?#iefix?1717543760");
-    src: url("../fonts/e9167238-3b3f-4813-a04a-a384394eed42d41d.eot?#iefix?1717543760")
-    format("eot"),
-    url("../fonts/2cd55546-ec00-4af9-aeca-4a3cd186da533a50.woff2?1717543760")
-    format("woff2"),
-    url("../fonts/1e9892c0-6927-4412-9874-1b82801ba47a3a50.woff?1717543760")
-    format("woff"),
-    url("../fonts/46cf1067-688d-4aab-b0f7-bd942af6efd83a50.ttf?1717543760")
-    format("truetype"),
-    url("../fonts/52a192b1-bea5-4b48-879f-107f009b666f.svg#52a192b1-bea5-4b48-879f-107f009b666f?1717543760")
-    format("svg");
+    src: url("../fonts/birdseye.woff2") format("woff2"),
+    url("../fonts/birdseye.woff") format("woff"),
+    url("../fonts/birdseye.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
 }
 @font-face {
     font-family: "Birdseye";
-    src: url("../fonts/d1fddef1-d940-4904-8f6c-17e809462301d41d.eot?#iefix?1717543760");
-    src: url("../fonts/d1fddef1-d940-4904-8f6c-17e809462301d41d.eot?#iefix?1717543760")
-    format("eot"),
-    url("../fonts/7377dbe6-f11a-4a05-b33c-bc8ce1f60f843a50.woff2?1717543760")
-    format("woff2"),
-    url("../fonts/92b66dbd-4201-4ac2-a605-4d4ffc8705cc3a50.woff?1717543760")
-    format("woff"),
-    url("../fonts/18839597-afa8-4f0b-9abb-4a30262d0da83a50.ttf?1717543760")
-    format("truetype"),
-    url("../fonts/1de7e6f4-9d4d-47e7-ab23-7d5cf10ab585.svg#1de7e6f4-9d4d-47e7-ab23-7d5cf10ab585?1717543760")
-    format("svg");
+    src: url("../fonts/birdseye-italic.woff2") format("woff2"),
+    url("../fonts/birdseye-italic.woff") format("woff"),
+    url("../fonts/birdseye-italic.ttf") format("truetype");
     font-weight: 500;
     font-style: italic;
 }
 @font-face {
     font-family: "Birdseye";
-    src: url("../fonts/1a7c9181-cd24-4943-a9d9-d033189524e0d41d.eot?#iefix?1717543760");
-    src: url("../fonts/1a7c9181-cd24-4943-a9d9-d033189524e0d41d.eot?#iefix?1717543760")
-    format("eot"),
-    url("../fonts/627fbb5a-3bae-4cd9-b617-2f923e29d55e3a50.woff2?1717543760")
-    format("woff2"),
-    url("../fonts/f26faddb-86cc-4477-a253-1e12876843363a50.woff?1717543760")
-    format("woff"),
-    url("../fonts/63a74598-733c-4d0c-bd91-b01bffcd6e693a50.ttf?1717543760")
-    format("truetype"),
-    url("../fonts/a89d6ad1-a04f-4a8f-b140-e55478dbea80.svg#a89d6ad1-a04f-4a8f-b140-e55478dbea80?1717543760")
-    format("svg");
+    src: url("../fonts/birdseye-bold.woff2") format("woff2"),
+    url("../fonts/birdseye-bold.woff") format("woff"),
+    url("../fonts/birdseye-bold.ttf") format("truetype");
     font-weight: 600;
     font-style: normal;
 }
 @font-face {
     font-family: "Birdseye";
-    src: url("../fonts/77a9cdce-ea6a-4f94-95df-e6a54555545ed41d.eot?#iefix?1717543760");
-    src: url("../fonts/77a9cdce-ea6a-4f94-95df-e6a54555545ed41d.eot?#iefix?1717543760")
-    format("eot"),
-    url("../fonts/3f380a53-50ea-4a62-95c5-d5d8dba03ab83a50.woff2?1717543760")
-    format("woff2"),
-    url("../fonts/8344e877-560d-44d4-82eb-9822766676f93a50.woff?1717543760")
-    format("woff"),
-    url("../fonts/b28b01d9-78c5-46c6-a30d-9a62c8f407c53a50.ttf?1717543760")
-    format("truetype"),
-    url("../fonts/ed4d3c45-af64-4992-974b-c37cd12a9570.svg#ed4d3c45-af64-4992-974b-c37cd12a9570?1717543760")
-    format("svg");
+    src: url("../fonts/birdseye-bold-italic.woff2") format("woff2"),
+    url("../fonts/birdseye-bold-italic.woff") format("woff"),
+    url("../fonts/birdseye-bold-italic.ttf") format("truetype");
     font-weight: 600;
     font-style: italic;
 }
@@ -130,13 +82,6 @@ body {
     /* Footer background and text colors */
     background: rgba(0, 0, 0, 0.05);
     color: #000000;
-
-    /* Possibly removable (defaults) */
-    font-size: 16px;
-    font-weight: 500;
-
-    /* Overridden */
-    font-family: "Birdseye", sans-serif;
 }
 
 a {
@@ -174,7 +119,7 @@ h4 {
     margin-bottom: 50px
 }
 
-/* Dividers are used as paragraphs to allow block-level elements (such as lists) to be placed inside them. */
+/* Dividers are used as paragraphs to allow block-level elements (such as lists) to be placed inside them */
 div.p {
     font-weight: 500;
     margin: 0 auto 30px;
@@ -206,16 +151,23 @@ div.p ul {
     list-style: disc inside;
 }
 
-/* Background image */
-.header-section {
+/* Header styling */
+.header-wrap {
+    position: relative;
     background: url(../images/geometric.jpg) no-repeat top center transparent;
-    height: 600px;
     background-size: cover;
-    width: 100vw;
+    color: #ffffff;
+    text-align: center;
+    min-height: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 /* Blurs the background and adds a gradient */
-.header-section::before {
+.header-wrap::before {
     content: "";
     display: block;
     position: absolute;
@@ -229,52 +181,12 @@ div.p ul {
             rgba(0, 0, 0, 0.1) 60%,
             rgba(0, 0, 0, 0) 100%
     );
-    backdrop-filter: blur(4px)
-}
-
-/* Vertically centers the title content */
-.header-section, .body-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    /* No idea what this does */
-    box-sizing: border-box;
-}
-
-/* Sizes the paragraph content box and positions the text at the top */
-.body-section {
-    min-height: 400px;
-    justify-content: flex-start;
-}
-
-.header-wrap {
-    position: relative;
-    /* Likely overridden */
-    background: #000000;
-    color: #ffffff;
+    backdrop-filter: blur(4px);
 }
 
 /* Padding for title div */
 .header-wrap .container {
     padding: /* Does nothing because of flexbox */100px /* Limits text width */40px;
-}
-
-/* Aligns title text */
-.header-wrap .header {
-    text-align: center;
-}
-
-/* Title area paragraphs; not used */
-.header-wrap div.p {
-    color: inherit;
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: 0.15em;
-    margin: 15px auto;
 }
 
 .container,
@@ -286,6 +198,7 @@ div.p ul {
 .main-wrap {
     width: 100%;
     background: #ffffff;
+    min-height: 400px;
 }
 
 /* Container div for main content */
@@ -305,6 +218,8 @@ div.p ul {
 #footer-wrap {
     width: 100%;
     font-size: 14px;
+    font-family: "Birdseye", sans-serif;
+    font-weight: 500;
 }
 
 #footer-wrap .footer {
@@ -322,7 +237,7 @@ div.p ul {
 /*</editor-fold>*/
 
 /* <editor-fold desc="Navbar properties"> */
-.nav-wrap {
+.desktop-nav {
     position: fixed;
     top: 0;
     z-index: 12;
@@ -336,13 +251,13 @@ div.p ul {
 
     backface-visibility: hidden;
 }
-.nav-wrap .container /* The container specification seems unnecessary, so this could be merged with the above selector */ {
+.desktop-nav .container /* The container specification seems unnecessary, so this could be merged with the above selector */ {
     display: block;
     width: 100%;
     max-height: 80px;
     overflow: visible;
 }
-.nav-wrap .hamburger {
+.desktop-nav .hamburger {
     display: none;
     box-sizing: initial;
 }
@@ -455,30 +370,30 @@ div.more-subnav-content {
 /* </editor-fold> */
 
 /*<editor-fold desc="Scrolled navbar properties"> */
-body.affix .nav-wrap {
+body.affix .desktop-nav {
     position: fixed;
     padding: 10px 40px;
 }
 
 
-body.affix .nav-wrap .nav-item {
+body.affix .desktop-nav .nav-item {
     padding: 10px 20px;
 }
 
-body.affix .nav-wrap {
+body.affix .desktop-nav {
     background: #ffffff;
     color: #000000;
     border-color: #000000;
 }
 
-body.affix .nav-wrap .hamburger span,
-body.affix .nav-wrap .hamburger span:before,
-body.affix .nav-wrap .hamburger span:after {
+body.affix .desktop-nav .hamburger span,
+body.affix .desktop-nav .hamburger span:before,
+body.affix .desktop-nav .hamburger span:after {
     background: #000000;
 }
 
 /* A dark mode navigation; possibly good for the rest of the site later */
-body.affix.alt-nav-on .nav-wrap {
+body.affix.alt-nav-on .desktop-nav {
     background: rgba(0, 0, 0, 0.9);
     color: #ffffff;
     border-color: #ffffff;
@@ -486,20 +401,19 @@ body.affix.alt-nav-on .nav-wrap {
 
 /* </editor-fold> */
 
-.desktop-nav {
+.desktop-nav ul {
     opacity: 0;
     transition: opacity 600ms ease-in 300ms;
-    height: 50px;
+    /*height: 50px;*/
 }
 body.affix .desktop-nav {
-    height: 46px;
+    /*height: 46px;*/
 }
-.fade-in .desktop-nav {
+.fade-in .desktop-nav ul {
     opacity: 1;
 }
 
 @media screen and (max-width: 1263px) {
-    /* Todo: add display for active page in more subnav */
     li.more-subnav-wrap {
         display: inline-block;
     }
@@ -533,45 +447,34 @@ body.affix .desktop-nav {
     .subnav-item:hover {
         opacity: 0.5;
     }
+    .subnav-item.active span {
+        display: inline;
+        border: 1px black solid;
+        border-radius: 5px;
+        padding: 2px;
+    }
+
+    .subnav-item {
+        position: relative;
+    }
 }
 
 @media screen and (max-width: 992px) {
-    font[size="1"] {
-        font-size: 50%;
-    }
-    font[size="2"] {
-        font-size: 75%;
-    }
-    font[size="3"] {
-        font-size: 125%;
-    }
-    font[size="4"] {
-        font-size: 150%;
-    }
-    font[size="5"] {
-        font-size: 175%;
-    }
-    font[size="6"] {
-        font-size: 200%;
-    }
-    font[size="7"] {
-        font-size: 250%;
-    }
     .container,
     .footer {
         overflow: hidden;
     }
-    .nav-wrap {
+    .desktop-nav {
         top: 0;
         left: 0;
         padding: 5px 20px !important /* Necessary to override existing settings with higher specificity*/;
         min-height: 50px;
     }
-    .nav-wrap .container {
+    .desktop-nav .container {
         min-height: 40px;
         max-height: inherit;
     }
-    .nav-wrap .hamburger {
+    .desktop-nav .hamburger {
         display: inline;
         vertical-align: middle;
     }
@@ -579,15 +482,15 @@ body.affix .desktop-nav {
         padding: 50px 0;
         max-height: 100vh;
     }
-    body.nav-open .nav-wrap label.hamburger span {
+    body.nav-open .desktop-nav label.hamburger span {
         position: relative;
         background: transparent;
     }
-    body.nav-open .nav-wrap label.hamburger span:before {
+    body.nav-open .desktop-nav label.hamburger span:before {
         top: 1px;
         transform: rotate(45deg);
     }
-    body.nav-open .nav-wrap label.hamburger span:after {
+    body.nav-open .desktop-nav label.hamburger span:after {
         top: -1px;
         transform: rotate(135deg);
     }
@@ -623,7 +526,7 @@ body.affix .desktop-nav {
     .hamburger span:after {
         bottom: -6px;
     }
-    .desktop-nav {
+    .desktop-nav ul {
         display: none;
     }
     .mobile-nav {
@@ -704,27 +607,6 @@ body.affix .desktop-nav {
 }
 
 @media screen and (max-width: 767px) {
-    font[size="1"] {
-        font-size: 50%;
-    }
-    font[size="2"] {
-        font-size: 75%;
-    }
-    font[size="3"] {
-        font-size: 110%;
-    }
-    font[size="4"] {
-        font-size: 120%;
-    }
-    font[size="5"] {
-        font-size: 130%;
-    }
-    font[size="6"] {
-        font-size: 140%;
-    }
-    font[size="7"] {
-        font-size: 150%;
-    }
     h1 {
         font-size: clamp(10px, 9vw, 50px);
     }

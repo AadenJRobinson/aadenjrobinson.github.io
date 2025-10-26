@@ -27,14 +27,18 @@ document.addEventListener('DOMContentLoaded', function() {
     function collapseNav() {
         // Code will only execute if the hamburger menu is enabled (desktop nav is disabled)
         if($('.desktop-nav').style.display === 'none') return;
-        let nav = $('.nav-default');
+        let nav = $('.desktop-nav ul');
+        let moreMenu = nav.children[nav.children.length - 1];
 
         Array.from(nav.children).forEach(el => {
             if(el.style.display === 'none') el.style.display = '';
         });
 
+        Array.from($('.more-subnav-content a -f', moreMenu)).forEach(el => {
+            if(el.style.display !== 'none') el.style.display = '';
+        });
+
         let counter = 2;
-        let moreMenu = nav.children[nav.children.length - 1];
         let removedEls = [];
         while(nav.offsetHeight > 50) {
             let removeEl = nav.children[nav.children.length - counter];
@@ -47,13 +51,18 @@ document.addEventListener('DOMContentLoaded', function() {
             removedEls.push($('a', removeEl));
             counter++;
         }
-        let moreNavContent = Array.from($('.nav-default .more-subnav-wrap > div a -f'));
+        let moreNavContent = Array.from($('.desktop-nav ul .more-subnav-wrap > div a -f'));
         moreNavContent.reverse();
         let moreNavContentHTML = [];
-        moreNavContent.forEach(el => moreNavContentHTML.push(el.innerHTML));
+        moreNavContent.forEach(el => moreNavContentHTML.push(el.classList.contains('active') ?
+            $('span', el).innerHTML : el.innerHTML));
+
         for(let i = 0; i < removedEls.length; i++) {
             if(moreNavContentHTML.includes(removedEls[i].innerHTML)) {
                 moreNavContent[i].style.display = 'block';
+                if(moreNavContent[i].classList.contains('active')) {
+                    console.log(moreNavContent[i].style.display);
+                }
             }
         }
     }
