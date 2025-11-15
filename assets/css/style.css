@@ -213,19 +213,17 @@ div.p ul {
     font-family: "Birdseye", sans-serif;
     font-weight: 500;
 }
-
 #footer-wrap .footer {
     padding: 20px 40px;
 }
-
 #footer-wrap h2,
 #footer-wrap div.p {
     margin: 0 auto 20px;
 }
-
 #footer-wrap h2 {
     font-size: 20px;
 }
+
 /*</editor-fold>*/
 
 /* <editor-fold desc="Navbar properties"> */
@@ -405,16 +403,16 @@ body.affix .desktop-nav {
     opacity: 1;
 }
 
-@media screen and (max-width: 1263px) {
-    li.more-subnav-wrap {
+/*<editor-fold desc="'More subnav' properties (when enabled)">*/
+.more-subnav-enabled li.more-subnav-wrap {
         display: inline-block;
     }
-    li.more-subnav-wrap > div.more-subnav-wrap {
+.more-subnav-enabled li.more-subnav-wrap > div.more-subnav-wrap {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    li.more-subnav-wrap .more-subnav-content {
+.more-subnav-enabled li.more-subnav-wrap .more-subnav-content {
         position: absolute;
         text-align: center;
         border-radius: 5px;
@@ -423,33 +421,33 @@ body.affix .desktop-nav {
         top: 100%;
         width: 100%;
     }
-    li.more-subnav-wrap:hover .more-subnav-content {
+.more-subnav-enabled li.more-subnav-wrap:hover .more-subnav-content {
         display: block;
         visibility: visible;
         opacity: 1;
         transform: translateY(0);
     }
-    .subnav-item {
+.more-subnav-enabled .subnav-item {
         font-weight: 500;
         font-size: 14px;
         font-family: Roboto, sans-serif;
         padding: 5px 0;
         transition: opacity 300ms ease-in-out;
     }
-    .subnav-item:hover {
+.more-subnav-enabled .subnav-item:hover {
         opacity: 0.5;
     }
-    .subnav-item.active span {
+.more-subnav-enabled .subnav-item.active span {
         display: inline;
         border: 1px black solid;
         border-radius: 5px;
         padding: 2px;
     }
 
-    .subnav-item {
+.more-subnav-enabled .subnav-item {
         position: relative;
     }
-}
+/*</editor-fold>*/
 
 @media screen and (max-width: 992px) {
     .container,
@@ -593,13 +591,13 @@ body.affix .desktop-nav {
     }
     #footer-wrap .footer {
         width: 100%;
-        padding: 30px 20px;
+        padding: 30px 20px; /*todo: Is it necessary to remove this?*/
         box-sizing: border-box;
     }
 }
 
 @media screen and (max-width: 767px) {
     h1 {
-        font-size: clamp(10px, 9vw, 50px);
+        font-size: clamp(20px, 9vw, 50px);
     }
 }

@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
         Array.from(nav.children).forEach(el => {
             if(el.style.display === 'none') el.style.display = '';
         });
-
         Array.from($('.more-subnav-content a -f', moreMenu)).forEach(el => {
             if(el.style.display !== 'none') el.style.display = '';
         });
@@ -61,6 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
             removedEls.push($('a', removeEl));
             counter++;
         }
+
+        if (removedEls.length > 0) body.classList.add('more-subnav-enabled');
+        else body.classList.remove('more-subnav-enabled');
+
         let moreNavContent = Array.from($('.desktop-nav ul .more-subnav-wrap > div a -f'));
         moreNavContent.reverse();
         let moreNavContentHTML = [];
@@ -68,12 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
             $('span', el).innerHTML : el.innerHTML));
 
         for(let i = 0; i < removedEls.length; i++) {
-            if(moreNavContentHTML.includes(removedEls[i].innerHTML)) {
-                moreNavContent[i].style.display = 'block';
-                if(moreNavContent[i].classList.contains('active')) {
-                    console.log(moreNavContent[i].style.display);
-                }
-            }
+            if(moreNavContentHTML.includes(removedEls[i].innerHTML)) moreNavContent[i].style.display = 'block';
+
         }
     }
 });
