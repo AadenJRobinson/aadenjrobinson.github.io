@@ -14,9 +14,11 @@ ul, ol {
     padding: 0;
     list-style: none;
 }
-div, div.p, form {
+div, div.p, form, button {
     margin: 0;
     padding: 0;
+    border: 0;
+    box-sizing: border-box;
 }
 /*</editor-fold>*/
 /*<editor-fold desc="Birdseye font">*/
@@ -230,7 +232,7 @@ div.p ul {
 .desktop-nav {
     position: fixed;
     top: 0;
-    z-index: 12;
+    z-index: 10;
     width: 100%;
     padding: 20px 40px;
     color: #ffffff;
@@ -308,7 +310,7 @@ div.p ul {
     left: 0;
     transform: scaleX(0) translate3d(0,0,0) /* Included to ensure the effect is uniform */;
     transform-origin: right;
-    transition: transform 0.4s ease-out;
+    transition: transform 400ms ease-out;
 }
 .desktop-nav li a.nav-item::before {
     top: -5px;
@@ -329,7 +331,7 @@ div.p ul {
 }
 
 .desktop-nav li.active a.nav-item {
-    transition: border 0.3s ease;
+    transition: border 300ms ease;
 }
 .desktop-nav li.active a.nav-item:hover {
     border: 1px rgba(0, 0, 0, 0%) solid;
@@ -348,7 +350,7 @@ div.more-subnav-content {
     visibility: hidden;
     transform: translateY(-10px);
     opacity: 0;
-    transition: all 0.4s ease-in-out;
+    transition: all 400ms ease-in-out;
 }
 .subnav-item {
     display: none;
@@ -364,12 +366,9 @@ body.affix .desktop-nav {
     position: fixed;
     padding: 10px 40px;
 }
-
-
 body.affix .desktop-nav .nav-item {
     padding: 10px 20px;
 }
-
 body.affix .desktop-nav {
     background: #ffffff;
     color: #000000;
@@ -388,8 +387,52 @@ body.affix.alt-nav-on .desktop-nav {
     color: #ffffff;
     border-color: #ffffff;
 }
-
 /* </editor-fold> */
+
+/*<editor-fold desc="Notice bar properties">*/
+.notice-bar {
+    display: none; /* Updated by JavaScript */
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    width: 100%;
+    background-color: rgba(220, 7, 7, 0.5);
+    padding: 5px 10px;
+    overflow: visible;
+    font-family: Roboto, sans-serif;
+    color: #ffffff;
+}
+.notice-bar .container {
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px;
+}
+.notice-bar .container span {
+    padding: 2px;
+}
+.notice-bar .container .info {
+    display: none;
+    padding-top: 10px;
+}
+.notice-bar button {
+    padding: 10px;
+    font-size: 25px;
+    background-color: transparent;
+    color: inherit;
+
+    transition: opacity 300ms ease;
+}
+.notice-bar button:hover {
+    opacity: 0.5;
+}
+.notice-bar .spacer {
+    visibility: hidden;
+    padding: 10px;
+    font-size: 25px;
+}
+
+/*</editor-fold>*/
 
 .desktop-nav ul {
     opacity: 0;
@@ -523,7 +566,7 @@ body.affix .desktop-nav {
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 12;
+        z-index: 10;
         display: block;
         overflow-x: hidden;
         overflow-y: auto;
