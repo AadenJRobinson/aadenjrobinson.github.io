@@ -4,16 +4,16 @@ function $(selector, ctx) {
     let findAll = / -f$/;
     return findAll.test(selector) ? (ctx || document).querySelectorAll(selector.split(findAll)[0]) : (ctx || document).querySelector(selector);
 }
+
 const templates = {
     noticeBar: parser.parseFromString(`
         <div class="notice-bar">
             <div class="spacer"><i class="fa-solid fa-xmark"></i></div>
             <div class="container">
-                <span>Caltech Admissions: Please Read! <i class="fa-solid fa-caret-down"></i></span>
+                <span>University Admissions: Please Read! <i class="fa-solid fa-caret-down"></i></span>
                 <div class="info">
                     Thank you for checking out my website! The pages titled "Projects," "Resume," and "Experience" all have
-                    STEM-based information
-                    on them. However, I encourage you to look through "Extracurriculars" and "Contact" as well (the latter
+                    STEM-based information on them. However, I encourage you to look through "Extracurriculars" and "Contact" as well (the latter
                     specifically for the code).
                 </div>
             </div>
@@ -28,6 +28,7 @@ const templates = {
         </div>
     </div>`, 'text/html').body.firstElementChild
 };
+
 document.addEventListener('DOMContentLoaded', function () {
     let body = $('body');
     body.classList.add('fade-in');
@@ -94,6 +95,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let counter = 2;
         let removedEls = [];
+        body.classList.add('more-subnav-enabled');
+
         while(nav.offsetHeight > 50) {
             let removeEl = nav.children[nav.children.length - counter];
             if(removeEl === moreMenu) {
