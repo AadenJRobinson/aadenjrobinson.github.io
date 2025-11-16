@@ -4,13 +4,6 @@ function $(selector, ctx) {
     let findAll = / -f$/;
     return findAll.test(selector) ? (ctx || document).querySelectorAll(selector.split(findAll)[0]) : (ctx || document).querySelector(selector);
 }
-const deviceChecker = {
-    regex1: /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i,
-    regex2: /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/i,
-    isMobile: function (userAgent) {
-        return this.regex1.test(userAgent) || this.regex2.test(userAgent);
-    }
-};
 const templates = {
     noticeBar: parser.parseFromString(`
         <div class="notice-bar">
@@ -58,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let noticeBar = this.parentElement;
         noticeBar.style.display = 'none';
         moveNavbar();
-        setCookie('noticeBarClosed', 1, '1min');
+        setCookie('noticeBarClosed', 1, '2d');
     });
     $('.notice-bar .container span').addEventListener('click', function() {
         let info = $('.notice-bar .container .info');

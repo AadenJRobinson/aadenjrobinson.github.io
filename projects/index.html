@@ -8,6 +8,76 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css" title="theme-css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Droid+Serif:wght@400;700&display=swap&family=Lora:ital,wght@0,400..700;1,400..700" rel='stylesheet'>
     <link rel="stylesheet" href="../assets/fontawesome/fa.min.css">
+
+    <style>
+        h2.subtitle {
+            margin-bottom: 5px;
+            font-size: 32px;
+            border-top: 1px solid black;
+        }
+        .subtitle, div.p {
+            padding-top: 10px;
+        }
+        .container .last {
+            border-bottom: 1px solid black;
+            padding-bottom: 20px;
+        }
+        div.p {
+            margin-bottom: 20px;
+        }
+        .main-wrap .container {
+            width: auto;
+            max-width: 1100px;
+        }
+
+        .galleries {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+        }
+        .gallery {
+            position: relative;
+            width: 30%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .gallery .slide {
+            display: none;
+            width: 100%;
+        }
+        .gallery :is(.prev, .next) {
+            cursor: pointer;
+            position: absolute;
+            top: calc(50% - 27px);
+            width: auto;
+            padding: 10px;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .gallery .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .gallery .prev:hover,
+        .gallery .next:hover {
+            color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .gallery .color-invert {
+            color: rgba(0, 0, 0, 0.3);
+        }
+        .gallery .caption {
+            text-align: center;
+            background-color: #222222;
+            padding: 2px 16px;
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 <div class="desktop-nav">
@@ -40,13 +110,66 @@
 </div>
 <div class="main-wrap">
     <div class="container">
+        <h2 class="subtitle">Ether Infinity Skyblock</h2>
         <div class="p">
-            My primary project is a world generator and manager designed for the Minecraft: Java Edition server EtherealCraft. This software procedurally generates worlds with
+            This is a world generator and manager designed for the Minecraft: Java Edition server EtherealCraft. This software procedurally generates worlds with
             floating islands (commonly known as "Skyblock" islands) spread out randomly, and of varying sizes. The user can select create multiple worlds, each from one of four
             size presets. All the necessary data is stored in a database when the server shuts down, and virtually every setting is configurable. I hope to complete this project
             and publish it to the server before I graduate.
         </div>
 
+        <h2 class="subtitle">Engineering Academy</h2>
+        <div class="p">
+            In the Temescal Canyon Engineering Academy, I have worked on and completed various projects, consisting primarily of the Titans of CNC. These are parts that we design
+            on SolidWorks, create toolpaths for with MasterCam, and finally cut from aluminum stock metal using Haas milling machines. Scroll or click through the images below
+            to see more.
+            <div class="galleries">
+                <div id="inspection" class="gallery">
+                    <img class="slide" src="inspection/certification.png" alt="Haas Mill Certification">
+                    <img class="slide" src="inspection/titan1.png" alt="Titan 1 Inspection Sheet">
+                    <img class="slide" src="inspection/titan2.png" alt="Titan 2 Inspection Sheet">
+                    <img class="slide" src="inspection/titan3.png" alt="Titan 3 Inspection Sheet">
+                    <img class="slide" src="inspection/titan4.png" alt="Titan 4 Inspection Sheet">
+                    <img class="slide" src="inspection/titan5.png" alt="Titan 5 Inspection Sheet">
+                    <img class="slide" src="inspection/titan6.png" alt="Titan 6 Inspection Sheet">
+                    <img class="slide" src="inspection/titan7.png" alt="Titan 7 Inspection Sheet">
+                    <img class="slide" src="inspection/titan8.png" alt="Titan 8 Inspection Sheet">
+                    <img class="slide" src="inspection/titan9.png" alt="Titan 9 Inspection Sheet">
+                    <a class="prev color-invert" onclick="incrementSlides(-1, 'inspection')"><i class="fa-solid fa-angles-left"></i></a>
+                    <a class="next color-invert" onclick="incrementSlides(1, 'inspection');"><i class="fa-solid fa-angles-right"></i></a>
+                    <div class="caption"><p></p></div>
+                </div>
+                <div id="machined" class="gallery">
+                    <img class="slide" src="machined/titan1.png" alt="Titan 1 Machined Part">
+                    <img class="slide" src="machined/titan2.png" alt="Titan 2 Machined Part">
+                    <img class="slide" src="machined/titan3.png" alt="Titan 3 Machined Part">
+                    <img class="slide" src="machined/titan4.png" alt="Titan 4 Machined Part">
+                    <img class="slide" src="machined/titan5.png" alt="Titan 5 Machined Part">
+                    <img class="slide" src="machined/titan6.png" alt="Titan 6 Machined Part">
+                    <img class="slide" src="machined/titan7.png" alt="Titan 7 Machined Part">
+                    <img class="slide" src="machined/titan8.png" alt="Titan 8 Machined Part">
+                    <img class="slide" src="machined/titan9.png" alt="Titan 9 Machined Part">
+                    <a class="prev" onclick="incrementSlides(-1, 'machined')"><i class="fa-solid fa-angles-left"></i></a>
+                    <a class="next" onclick="incrementSlides(1, 'machined');"><i class="fa-solid fa-angles-right"></i></a>
+                    <div class="caption"><p></p></div>
+                </div>
+                <div id="mcam" class="gallery">
+                    <img class="slide" src="mcam/titan1.png" alt="Titan 1 MasterCam">
+                    <img class="slide" src="mcam/titan2.png" alt="Titan 2 MasterCam">
+                    <img class="slide" src="mcam/titan3.png" alt="Titan 3 MasterCam">
+                    <img class="slide" src="mcam/titan4.png" alt="Titan 4 MasterCam">
+                    <img class="slide" src="mcam/titan5.png" alt="Titan 5 MasterCam">
+                    <img class="slide" src="mcam/titan6.png" alt="Titan 6 MasterCam">
+                    <img class="slide" src="mcam/titan7.png" alt="Titan 7 MasterCam">
+                    <img class="slide" src="mcam/titan8.png" alt="Titan 8 MasterCam">
+                    <img class="slide" src="mcam/titan9.png" alt="Titan 9 MasterCam">
+                    <a class="prev color-invert" onclick="incrementSlides(-1, 'mcam')"><i class="fa-solid fa-angles-left"></i></a>
+                    <a class="next color-invert" onclick="incrementSlides(1, 'mcam');"><i class="fa-solid fa-angles-right"></i></a>
+                    <div class="caption"><p></p></div>
+                </div>
+            </div>
+
+            <div>Test</div>
         </div>
     </div>
 </div>
@@ -62,6 +185,63 @@
         <li class="nav-item-wrap"><a href="../contact" class="nav-item">Contact</a></li>
     </ul>
 </div>
+
 <script src="../assets/js/menu.js"></script>
+<script>
+    let galleries = ['inspection', 'machined', 'mcam'];
+    let slideIndex = {
+        inspection: 1,
+        machined: 1,
+        mcam: 1,
+        get: function(galleryId) {
+            switch (galleryId) {
+                case galleries[0]: return this.inspection;
+                case galleries[1]: return this.machined;
+                case galleries[2]: return this.mcam;
+                default: return null;
+            }
+        },
+        set: function(galleryId, n) {
+            switch (galleryId) {
+                case galleries[0]: this.inspection = n; break;
+                case galleries[1]: this.machined = n; break;
+                case galleries[2]: this.mcam = n; break;
+                default: console.error('Invalid gallery ID!')
+            }
+        }
+    };
+    for (let i = 0; i < galleries.length; i++) {
+        let gallery = galleries[i];
+        showSlides(slideIndex.get(gallery), gallery);
+        $('#' + gallery).addEventListener('wheel', (e) => scrollSlides(e, gallery));
+    }
+
+
+    function incrementSlides(n, galleryId) {
+        slideIndex.set(galleryId, slideIndex.get(galleryId) + n);
+        showSlides(slideIndex.get(galleryId), galleryId);
+    }
+
+    function showSlides(n, galleryId) {
+        let slides = $('#' + galleryId + ' .slide -f');
+        let captionText = $('#' + galleryId + ' .caption');
+        if (n > slides.length) slideIndex.set(galleryId, 1);
+        if (n < 1) slideIndex.set(galleryId, slides.length);
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = '';
+        }
+
+        slides[slideIndex.get(galleryId) - 1].style.display = 'block';
+        captionText.innerHTML = slides[slideIndex.get(galleryId) - 1].alt;
+    }
+
+    function scrollSlides(e, galleryId) {
+        e.preventDefault();
+
+        if (e.deltaY > 0) incrementSlides(1, galleryId);
+        else incrementSlides(-1, galleryId);
+    }
+
+</script>
 </body>
 </html>

@@ -410,6 +410,12 @@ body.affix.alt-nav-on .desktop-nav {
 }
 .notice-bar .container span {
     padding: 2px;
+    cursor: pointer;
+
+    transition: opacity 300ms ease;
+}
+.notice-bar .container span:hover {
+    opacity: 0.5;
 }
 .notice-bar .container .info {
     display: none;
