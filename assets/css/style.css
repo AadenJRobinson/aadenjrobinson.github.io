@@ -1,3 +1,4 @@
+
 /*<editor-fold desc="Reset tags" default-state="collapsed">*/
 body, html {
     margin: 0;
@@ -21,56 +22,6 @@ div, div.p, form, button {
     box-sizing: border-box;
 }
 /*</editor-fold>*/
-/*<editor-fold desc="Birdseye font">*/
-@font-face {
-    font-family: "Birdseye";
-    src: url("../fonts/birdseye-thin.woff2") format("woff2"),
-    url("../fonts/birdseye-thin.woff") format("woff"),
-    url("../fonts/birdseye-thin.ttf") format("truetype");
-    font-weight: 100;
-    font-style: normal;
-}
-@font-face {
-    font-family: "Birdseye";
-    src: url("../fonts/birdseye-thin-italic.woff2") format("woff2"),
-    url("../fonts/birdseye-thin-italic.woff") format("woff"),
-    url("../fonts/birdseye-thin-italic.ttf") format("truetype");
-    font-weight: 100;
-    font-style: italic;
-}
-@font-face {
-    font-family: "Birdseye";
-    src: url("../fonts/birdseye.woff2") format("woff2"),
-    url("../fonts/birdseye.woff") format("woff"),
-    url("../fonts/birdseye.ttf") format("truetype");
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-    font-family: "Birdseye";
-    src: url("../fonts/birdseye-italic.woff2") format("woff2"),
-    url("../fonts/birdseye-italic.woff") format("woff"),
-    url("../fonts/birdseye-italic.ttf") format("truetype");
-    font-weight: 500;
-    font-style: italic;
-}
-@font-face {
-    font-family: "Birdseye";
-    src: url("../fonts/birdseye-bold.woff2") format("woff2"),
-    url("../fonts/birdseye-bold.woff") format("woff"),
-    url("../fonts/birdseye-bold.ttf") format("truetype");
-    font-weight: 600;
-    font-style: normal;
-}
-@font-face {
-    font-family: "Birdseye";
-    src: url("../fonts/birdseye-bold-italic.woff2") format("woff2"),
-    url("../fonts/birdseye-bold-italic.woff") format("woff"),
-    url("../fonts/birdseye-bold-italic.ttf") format("truetype");
-    font-weight: 600;
-    font-style: italic;
-}
-/*</editor-fold>*/
 
 body {
     /* Footer background and text colors */
@@ -89,7 +40,7 @@ h1 {
     margin: 15px auto;
     font-size: 65px;
     line-height: 70px;
-    font-family: "Droid Serif", sans-serif;
+    font-family: "Noto Serif", serif;
     color: #000000;
     letter-spacing: 0;
 }
@@ -102,6 +53,20 @@ h2 {
     line-height: 54px;
     font-weight: 700;
     margin: 0 auto 30px;
+}
+
+/* h2 but smaller font size (used for resume format) */
+h2.subtitle {
+    margin-bottom: 5px;
+    font-size: 32px;
+    border-top: 1px solid black;
+    padding-top: 10px;
+}
+
+h3 {
+    color: #2a2a2a;
+    font-family: "Noto Serif", serif;
+    font-size: 20px;
 }
 
 /* Smaller subtitle (more like big paragraph text) */
@@ -188,6 +153,19 @@ div.p ul {
     position: relative;
 }
 
+.main-wrap .res.container {
+    max-width: 1000px;
+    box-sizing: content-box;
+}
+.main-wrap .res.container div.p {
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+.container .last-res-item {
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+}
+
 /* Main content */
 .main-wrap {
     width: 100%;
@@ -211,9 +189,9 @@ div.p ul {
 /*<editor-fold desc="Footer properties">*/
 #footer-wrap {
     width: 100%;
-    font-size: 14px;
-    font-family: "Birdseye", sans-serif;
-    font-weight: 500;
+    font-size: 15px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 300;
 }
 #footer-wrap .footer {
     padding: 20px 40px;

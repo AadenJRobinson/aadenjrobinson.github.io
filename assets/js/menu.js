@@ -29,11 +29,9 @@ const templates = {
     </div>`, 'text/html').body.firstElementChild
 };
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     let body = $('body');
     body.classList.add('fade-in');
-
-    body.prepend(templates.noticeBar);
     $('.main-wrap').after(templates.footer);
 
     $('.hamburger -f').forEach(function (hamburger) {
@@ -48,32 +46,36 @@ document.addEventListener('DOMContentLoaded', function () {
         collapseNav();
         moveNavbar();
     });
-    $('.notice-bar button').addEventListener('click', function () {
-        let noticeBar = this.parentElement;
-        noticeBar.style.display = 'none';
-        moveNavbar();
-        setCookie('noticeBarClosed', 1, '2d');
-    });
-    $('.notice-bar .container span').addEventListener('click', function() {
-        let info = $('.notice-bar .container .info');
-        let icon = $('i', this);
-        if(!info.style.display || info.style.display === 'none') {
-            info.style.display = 'block';
-            icon.classList.remove('fa-caret-down');
-            icon.classList.add('fa-caret-up');
-        }
-        else {
-            info.style.display = '';
-            icon.classList.remove('fa-caret-up');
-            icon.classList.add('fa-caret-down');
-        }
-        moveNavbar();
-    });
-
     scrollNav();
     collapseNav();
-    updateNoticeBar();
-    moveNavbar();
+
+    if(!getCookie('noticeBarClosed')) {
+        body.prepend(templates.noticeBar);
+        $('.notice-bar button').addEventListener('click', function () {
+            let noticeBar = this.parentElement;
+            noticeBar.style.display = 'none';
+            moveNavbar();
+            setCookie('noticeBarClosed', 1, '2d');
+        });
+        $('.notice-bar .container span').addEventListener('click', function () {
+            let info = $('.notice-bar .container .info');
+            let icon = $('i', this);
+            if (!info.style.display || info.style.display === 'none') {
+                info.style.display = 'block';
+                icon.classList.remove('fa-caret-down');
+                icon.classList.add('fa-caret-up');
+            } else {
+                info.style.display = '';
+                icon.classList.remove('fa-caret-up');
+                icon.classList.add('fa-caret-down');
+            }
+            moveNavbar();
+        });
+        updateNoticeBar();
+        moveNavbar();
+    }
+
+
 
     function scrollNav() {
         let scrollClass = 'affix';
@@ -126,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function moveNavbar() {
         let noticeBar = $('.notice-bar');
+        if(!noticeBar) return;
         let navbar = getNavbar();
         if(noticeBar.style.display !== 'none') navbar.style.top = noticeBar.offsetHeight + 'px';
         else navbar.style.top = '';
@@ -138,10 +141,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function getNavbar() {
         let desktopNav = $('.desktop-nav');
-        let mobileNav = $('.mobile-nav');
-        return desktopNav.style.display !== 'none' ? desktopNav : mobileNav;
+        return desktopNav.style.display !== 'none' ? desktopNav : $('.mobile-nav');
     }
-    function setCookie(name, value, expires /* Format: (number) (s|min|hr|d) */) {
+    function setCookie(name, value, expires) {
         let expiresValue = expires !== 'session' ? expires.split(/(s|min|hr|d)/)[0] : null;
         let expiresUnit = expiresValue ? expires.split(/[0-9]+/)[1] : null;
         let factor = -1;

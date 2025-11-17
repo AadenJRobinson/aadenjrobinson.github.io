@@ -6,36 +6,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css" title="theme-css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Droid+Serif:wght@400;700&display=swap&family=Lora:ital,wght@0,400..700;1,400..700" rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Noto+Serif:wght@400;700&display=swap&family=Lora:ital,wght@0,400..700;1,400..700" rel='stylesheet'>
+
     <link rel="stylesheet" href="../assets/fontawesome/fa.min.css">
 
     <style>
-        h2.subtitle {
-            margin-bottom: 5px;
-            font-size: 32px;
-            border-top: 1px solid black;
-        }
-        .subtitle, div.p {
-            padding-top: 10px;
-        }
-        .container .last {
-            border-bottom: 1px solid black;
-            padding-bottom: 20px;
-        }
-        div.p {
-            margin-bottom: 20px;
-        }
-        .main-wrap .container {
-            width: auto;
-            max-width: 1100px;
-        }
-
-        .galleries {
+        .slideshows,
+        .gallery {
             display: flex;
             justify-content: space-between;
-            padding-top: 10px;
+            margin-top: 10px;
         }
         .gallery {
+            flex-direction: row;
+        }
+        .gallery > img {
+            width: auto;
+            max-width: 30%;
+            height: auto;
+            object-fit: contain;
+        }
+        .slideshow {
             position: relative;
             width: 30%;
 
@@ -43,14 +34,14 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        .gallery .slide {
+        .slideshow .slide {
             display: none;
             width: 100%;
         }
-        .gallery :is(.prev, .next) {
+        .slideshow :is(.prev, .next) {
             cursor: pointer;
             position: absolute;
-            top: calc(50% - 27px);
+            top: calc(50% - 21px);
             width: auto;
             padding: 10px;
             color: rgba(255, 255, 255, 0.3);
@@ -59,24 +50,79 @@
             border-radius: 0 3px 3px 0;
             user-select: none;
         }
-        .gallery .next {
+        .slideshow .next {
             right: 0;
             border-radius: 3px 0 0 3px;
         }
-        .gallery .prev:hover,
-        .gallery .next:hover {
+        .slideshow .prev:hover,
+        .slideshow .next:hover {
             color: rgba(255, 255, 255, 0.6);
             background-color: rgba(0, 0, 0, 0.8);
         }
-        .gallery .color-invert {
+        .slideshow .color-invert {
             color: rgba(0, 0, 0, 0.3);
         }
-        .gallery .caption {
+        .slideshow .caption {
             text-align: center;
             background-color: #222222;
             padding: 2px 16px;
             color: #ffffff;
         }
+
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 11;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .modal-content,
+        .modal-caption {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+            text-align: center;
+            color: #ffffff;
+            padding: 10px 0;
+            font-family: Roboto, sans-serif;
+        }
+        @keyframes zoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
+        .close-modal-button {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close-modal-button:hover,
+        .close-modal-button:focus {
+            opacity: 0.5;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .slideshow .slide.active {
+            display: block;
+        }
+        body.modal-open {
+            overflow: hidden;
+        }
+        @media screen and (max-width: 700px) {.modal-content {width: 100vw;}}
+
     </style>
 </head>
 <body>
@@ -109,7 +155,7 @@
     </div>
 </div>
 <div class="main-wrap">
-    <div class="container">
+    <div class="res container">
         <h2 class="subtitle">Ether Infinity Skyblock</h2>
         <div class="p">
             This is a world generator and manager designed for the Minecraft: Java Edition server EtherealCraft. This software procedurally generates worlds with
@@ -117,15 +163,18 @@
             size presets. All the necessary data is stored in a database when the server shuts down, and virtually every setting is configurable. I hope to complete this project
             and publish it to the server before I graduate.
         </div>
-
-        <h2 class="subtitle">Engineering Academy</h2>
-        <div class="p">
-            In the Temescal Canyon Engineering Academy, I have worked on and completed various projects, consisting primarily of the Titans of CNC. These are parts that we design
-            on SolidWorks, create toolpaths for with MasterCam, and finally cut from aluminum stock metal using Haas milling machines. Scroll or click through the images below
-            to see more.
-            <div class="galleries last">
-                <div id="inspection" class="gallery">
-                    <img class="slide" src="inspection/certification.png" alt="Haas Mill Certification">
+        <h2 class="subtitle" style="margin-bottom: 0">Engineering Academy</h2>
+        <div class="p" style="margin-bottom: 15px; padding-top: 5px">
+            In the Temescal Canyon Engineering Academy, I have worked on and completed various projects,
+            as outlined below.
+        </div>
+        <h3>Titans of CNC</h3>
+        <div class="p" style="margin-bottom: 30px">
+            The Titans of CNC are parts that we design on SolidWorks, create toolpaths for with MasterCam, and finally cut from aluminum stock metal using Haas milling
+            machines. Scroll or click through the images below to see more.
+            <div class="slideshows">
+                <div id="inspection" class="slideshow">
+                    <img class="slide active" src="inspection/certification.png" alt="Haas Mill Certification">
                     <img class="slide" src="inspection/titan1.png" alt="Titan 1 Inspection Sheet">
                     <img class="slide" src="inspection/titan2.png" alt="Titan 2 Inspection Sheet">
                     <img class="slide" src="inspection/titan3.png" alt="Titan 3 Inspection Sheet">
@@ -137,10 +186,10 @@
                     <img class="slide" src="inspection/titan9.png" alt="Titan 9 Inspection Sheet">
                     <a class="prev color-invert" onclick="incrementSlides(-1, 'inspection')"><i class="fa-solid fa-angles-left"></i></a>
                     <a class="next color-invert" onclick="incrementSlides(1, 'inspection');"><i class="fa-solid fa-angles-right"></i></a>
-                    <div class="caption"><p></p></div>
+                    <div class="caption"></div>
                 </div>
-                <div id="machined" class="gallery">
-                    <img class="slide" src="machined/titan1.png" alt="Titan 1 Machined Part">
+                <div id="machined" class="slideshow">
+                    <img class="slide active" src="machined/titan1.png" alt="Titan 1 Machined Part">
                     <img class="slide" src="machined/titan2.png" alt="Titan 2 Machined Part">
                     <img class="slide" src="machined/titan3.png" alt="Titan 3 Machined Part">
                     <img class="slide" src="machined/titan4.png" alt="Titan 4 Machined Part">
@@ -151,10 +200,10 @@
                     <img class="slide" src="machined/titan9.png" alt="Titan 9 Machined Part">
                     <a class="prev" onclick="incrementSlides(-1, 'machined')"><i class="fa-solid fa-angles-left"></i></a>
                     <a class="next" onclick="incrementSlides(1, 'machined');"><i class="fa-solid fa-angles-right"></i></a>
-                    <div class="caption"><p></p></div>
+                    <div class="caption"></div>
                 </div>
-                <div id="mcam" class="gallery">
-                    <img class="slide" src="mcam/titan1.png" alt="Titan 1 MasterCam">
+                <div id="mcam" class="slideshow">
+                    <img class="slide active" src="mcam/titan1.png" alt="Titan 1 MasterCam">
                     <img class="slide" src="mcam/titan2.png" alt="Titan 2 MasterCam">
                     <img class="slide" src="mcam/titan3.png" alt="Titan 3 MasterCam">
                     <img class="slide" src="mcam/titan4.png" alt="Titan 4 MasterCam">
@@ -165,11 +214,31 @@
                     <img class="slide" src="mcam/titan9.png" alt="Titan 9 MasterCam">
                     <a class="prev color-invert" onclick="incrementSlides(-1, 'mcam')"><i class="fa-solid fa-angles-left"></i></a>
                     <a class="next color-invert" onclick="incrementSlides(1, 'mcam');"><i class="fa-solid fa-angles-right"></i></a>
-                    <div class="caption"><p></p></div>
+                    <div class="caption"></div>
                 </div>
             </div>
         </div>
+        <h3>Senior Project</h3>
+        <div class="p">
+            This year, I am working on a senior design project where I come up with an idea, present it to my class, design a physical representation in SolidWorks, and eventually
+            make toolpaths for it via Mastercam and cut it out of physical aluminum with Haas CNC machines (and CNC lathes in my case).
+            <br><br>
+            For my project, my group and I designed a machinist's "speed" vise handle, which has two locations to tighten a CNC vise &ndash; one on the end, for leverage;
+            and one in the middle, for speed. The design has been 3D modelled and drawn with SolidWorks, as well as 3D printed. I unfortuantely lack the photos for the
+            digital model and the other drawings, but I will upload them as soon as possible.
+            <div class="gallery last-res-item">
+                <img src="senior-project/body-drawing.png" alt="Body Drawing">
+                <img src="senior-project/senior-project-print.png" alt="3D Print (realistic)">
+                <img src="senior-project/senior-project-split-print.png" alt="3D Print (split)">
+            </div>
+        </div>
     </div>
+</div>
+
+<div id="modal">
+    <span class="close-modal-button" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+    <img class="modal-content" onclick="window.open(this.src)">
+    <div class="modal-caption"></div>
 </div>
 
 <div class="mobile-nav">
@@ -186,60 +255,58 @@
 
 <script src="../assets/js/menu.js"></script>
 <script>
-    let galleries = ['inspection', 'machined', 'mcam'];
-    let slideIndex = {
-        inspection: 1,
-        machined: 1,
-        mcam: 1,
-        get: function(galleryId) {
-            switch (galleryId) {
-                case galleries[0]: return this.inspection;
-                case galleries[1]: return this.machined;
-                case galleries[2]: return this.mcam;
-                default: return null;
-            }
-        },
-        set: function(galleryId, n) {
-            switch (galleryId) {
-                case galleries[0]: this.inspection = n; break;
-                case galleries[1]: this.machined = n; break;
-                case galleries[2]: this.mcam = n; break;
-                default: console.error('Invalid gallery ID!')
-            }
-        }
+    let indecies = {
+        'inspection': 1,
+        'machined': 1,
+        'mcam': 1
     };
-    for (let i = 0; i < galleries.length; i++) {
-        let gallery = galleries[i];
-        showSlides(slideIndex.get(gallery), gallery);
-        $('#' + gallery).addEventListener('wheel', (e) => scrollSlides(e, gallery));
+    for (let i = 0; i < Object.keys(indecies).length; i++) {
+        let slideshow = Object.keys(indecies)[i];
+        showSlide(indecies[slideshow], slideshow);
+        $('#' + slideshow).addEventListener('wheel', (e) => {
+            e.preventDefault();
+
+            if (e.deltaY > 0) incrementSlides(1, slideshow);
+            else incrementSlides(-1, slideshow);
+        });
+    }
+    function incrementSlides(n, slideshow) {
+        showSlide(indecies[slideshow] += n, slideshow);
+    }
+    function showSlide(n, slideshow) {
+        let slides = $('#' + slideshow + ' .slide -f');
+        let captionText = $('#' + slideshow + ' .caption');
+        if (n > slides.length) indecies[slideshow] = 1;
+        if (n < 1) indecies[slideshow] = slides.length;
+        for (let i = 0; i < slides.length; i++) slides[i].classList.remove('active');
+
+
+        slides[indecies[slideshow] - 1].classList.add('active');
+        captionText.innerHTML = slides[indecies[slideshow] - 1].alt;
     }
 
-
-    function incrementSlides(n, galleryId) {
-        slideIndex.set(galleryId, slideIndex.get(galleryId) + n);
-        showSlides(slideIndex.get(galleryId), galleryId);
+    $('img -f').forEach(img => img.addEventListener('click', () => openModal(img)));
+    window.addEventListener('keydown', (e) => {
+        if(document.body.classList.contains('modal-open'))
+            if(e.key === 'Escape') {
+                e.preventDefault();
+                closeModal();
+            }
+    });
+    function openModal(img) {
+        let modal = $('#modal');
+        let modalImg = $('.modal-content', modal);
+        let caption = $('.modal-caption', modal);
+        modal.style.display = 'block';
+        $('body').classList.add('modal-open');
+        modalImg.src = img.src;
+        caption.innerHTML = img.alt;
+        // window.open(src, '_blank');
     }
-
-    function showSlides(n, galleryId) {
-        let slides = $('#' + galleryId + ' .slide -f');
-        let captionText = $('#' + galleryId + ' .caption');
-        if (n > slides.length) slideIndex.set(galleryId, 1);
-        if (n < 1) slideIndex.set(galleryId, slides.length);
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = '';
-        }
-
-        slides[slideIndex.get(galleryId) - 1].style.display = 'block';
-        captionText.innerHTML = slides[slideIndex.get(galleryId) - 1].alt;
+    function closeModal() {
+        $('#modal').style.display = '';
+        $('body').classList.remove('modal-open');
     }
-
-    function scrollSlides(e, galleryId) {
-        e.preventDefault();
-
-        if (e.deltaY > 0) incrementSlides(1, galleryId);
-        else incrementSlides(-1, galleryId);
-    }
-
 </script>
 </body>
 </html>
