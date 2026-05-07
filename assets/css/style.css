@@ -206,7 +206,7 @@ div.p ul {
 
 /*</editor-fold>*/
 
-/* <editor-fold desc="Navbar properties"> */
+/*<editor-fold desc="Navbar properties">*/
 .desktop-nav {
     position: fixed;
     top: 0;
@@ -416,6 +416,61 @@ body.affix.alt-nav-on .desktop-nav {
     font-size: 25px;
 }
 
+/*</editor-fold>*/
+
+/*<editor-fold desc="Modal properties">*/
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 11;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+}
+.modal-content,
+.modal-caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+    text-align: center;
+    color: #ffffff;
+    padding: 10px 0;
+    font-family: Roboto, sans-serif;
+}
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+.close-modal-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.close-modal-button:hover,
+.close-modal-button:focus {
+    opacity: 0.5;
+    text-decoration: none;
+    cursor: pointer;
+}
+.slideshow .slide.active {
+    display: block;
+}
+body.modal-open {
+    overflow: hidden;
+}
 /*</editor-fold>*/
 
 .desktop-nav ul {

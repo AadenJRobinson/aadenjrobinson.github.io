@@ -23,7 +23,7 @@ const templates = {
     <div id="footer-wrap">
         <div class="footer">
             <div class="copyright">
-                &copy; 2025 Aaden Robinson. All rights reserved.
+                &copy; 2026 Aaden Robinson. All rights reserved.
             </div>
         </div>
     </div>`, 'text/html').body.firstElementChild
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     function updateNoticeBar() {
         let noticeBar = $('.notice-bar');
-        if (getCookie('noticeBarClosed')) noticeBar.style.display = '';
+        if (getCookie('noticeBarClosed') || true) noticeBar.style.display = '';
         else noticeBar.style.display = 'flex';
     }
 
