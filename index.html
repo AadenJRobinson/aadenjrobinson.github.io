@@ -11,6 +11,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Noto+Serif:wght@400;700&display=swap&family=Lora:ital,wght@0,400..700;1,400..700" rel='stylesheet'>
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" title="theme-css">
+    <style>
+        #self-portrait-after {
+            display: none;
+        }
+        @media screen and (max-width: 767px) {
+            #self-portrait {
+                display: none;
+            }
+            #self-portrait-after {
+                display: inherit;
+            }
+        }
+    </style>
 </head>
 <body>
 <div class="desktop-nav">
@@ -51,7 +64,8 @@
 <div class="main-wrap">
     <div class="container">
         <div style="height:50px;"></div>
-        <div style="display: flex; margin: 0 -15px">
+        <div style="display: flex; margin: 0; align-items: center">
+            <div id="self-portrait" style="max-width: 35%; padding: 0 15px"><img src="assets/images/suit-photo.png" alt="Photo of me" style="max-width: 100%"/></div>
             <div class="spacer" style="width: 16.75%; padding: 0 15px"></div>
             <div style="width: 83.25%; padding: 0 15px">
                 <h2>A Little About Myself</h2>
@@ -60,6 +74,7 @@
                     I will be majoring in computer science at UC Irvine.</div>
             </div>
         </div>
+        <div id="self-portrait-after" style="padding: 0 15px; text-align: center;"><img src="assets/images/suit-photo.png" alt="Photo of me" style="max-width: 66%"/></div>
     </div>
 </div>
 
